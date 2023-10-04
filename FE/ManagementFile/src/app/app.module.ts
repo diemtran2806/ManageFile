@@ -10,6 +10,7 @@ import { MainLayoutComponent } from './components/main-layout/main-layout.compon
 
 import { HttpClientModule } from '@angular/common/http';
 import { UploadFileComponent } from './upload-file/upload-file.component';
+import { View } from './View/view.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { UploadFileComponent } from './upload-file/upload-file.component';
     RegisterComponent,
     LoginComponent,
     MainLayoutComponent,
-    UploadFileComponent
+    UploadFileComponent,
+    View
   ],
   imports: [BrowserModule, AppRoutingModule, FontAwesomeModule, HttpClientModule],
   providers: [],
