@@ -1,4 +1,4 @@
-﻿namespace ManageFileBE.Interfaces
+﻿namespace ManageFileBE.Repository.Interface
 {
     public interface IFileRepository
     {
