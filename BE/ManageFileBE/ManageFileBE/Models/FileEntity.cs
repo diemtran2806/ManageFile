@@ -2,7 +2,7 @@
 
 namespace ManageFileBE.Models
 {
-    public class FileUpload
+    public class FileEntity
     {
         [Key]
         public int Id { get; set; }
