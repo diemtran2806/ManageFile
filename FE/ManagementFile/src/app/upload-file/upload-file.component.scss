@@ -1,0 +1,75 @@
+.containerForm {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.wrapperForm {
+    width: 50%;
+    height: 60%;
+    padding: 20px; /* Thêm padding để tạo khoảng cách với phần tử bên trong */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Thêm hiệu ứng shadow mờ mờ */
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.uploadImg {
+    display: flex;
+    width: 100px;
+    height: 100px;
+}
+
+.image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.label {
+    display: flex;
+    justify-content: center;
+    color: rgb(100, 99, 99);
+    font-size: 20px;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.input {
+    display: none;
+}
+
+.wrapperFile {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.btnUpload {
+    width: 100px;
+    height: 40px;
+    background-color: rgb(240, 136, 136);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.wrapperBtn {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.filename {
+    display: flex;
+    justify-content: center;
+    color: rgb(100, 99, 99);
+    font-size: 20px;
+    margin-bottom: 20px;
+    width: 100%;
+}

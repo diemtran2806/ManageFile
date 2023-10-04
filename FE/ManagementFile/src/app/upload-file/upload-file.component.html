@@ -1,0 +1,35 @@
+<div class="containerForm">
+    <div class="wrapperForm">
+        <div class="label">Choose the file you want to upload!</div>
+        <div class="wrapperFile">
+            <div class="image-container">
+                <img
+            src="../assets/uploadImg.png"
+            alt=""
+            class="uploadImg"
+            (click)="chooseFile()"
+          />
+            </div>
+      <input
+      #fileInput
+        type="file"
+        multiple
+        (change)="onFileSelected($event)"
+        class="input"
+      />
+      <div class="filename">
+        <!-- <ul *ngIf="selectedFile">
+          <li *ngFor="let file of selectedFiles">&#8728; {{ file.name }}</li>
+        </ul> -->
+        <div *ngIf="selectedFile">{{selectedFile.name}}</div>
+      </div>
+      <div class="wrapperBtn">
+        <button class="btnUpload" (click)="uploadFile()">Upload</button>
+       </div>
+        </div>
+        <!-- <form (submit)="uploadFile()" class="form">
+            <input type="file" (change)="onFileSelected($event)" class="input"/>
+            <button mat-raised-button type="submit" class="btnUpload">Upload</button>
+        </form> -->
+    </div>
+</div>
