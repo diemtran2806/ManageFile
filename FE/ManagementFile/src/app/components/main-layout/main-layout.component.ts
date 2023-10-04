@@ -5,6 +5,7 @@ import {
   faPlus,
   faFile,
 } from '@fortawesome/free-solid-svg-icons';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-main-layout',
@@ -16,4 +17,10 @@ export class MainLayoutComponent {
   faSearch = faMagnifyingGlass;
   faPlus = faPlus;
   faFile = faFile;
+  
+  constructor(private router: Router) { }
+
+  public uploadFile() {
+    this.router.navigate(['upload-file']);
+  }
 }
