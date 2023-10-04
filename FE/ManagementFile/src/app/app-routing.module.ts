@@ -14,11 +14,12 @@ const routes: Routes = [
     path: 'login',
     component: LoginComponent,
   },
-  { path: 'upload-file', component: UploadFileComponent },
   {
     path: '',
     component: MainLayoutComponent,
-    children: [],
+    children: [
+      { path: 'upload-file', component: UploadFileComponent },
+    ],
   },
 ];
 

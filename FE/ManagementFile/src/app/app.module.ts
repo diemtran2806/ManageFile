@@ -19,7 +19,7 @@ import { UploadFileComponent } from './upload-file/upload-file.component';
     MainLayoutComponent,
     UploadFileComponent
   ],
-  imports: [BrowserModule, AppRoutingModule, FontAwesomeModule],
+  imports: [BrowserModule, AppRoutingModule, FontAwesomeModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
 })
