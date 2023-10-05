@@ -27,12 +27,23 @@
 
 .image-container {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100%;
     cursor: pointer;
     border: 1px dashed rgb(100, 99, 99);
     padding: 20px;
+}
+
+.content_text {
+    display: flex;
+    justify-content: center;
+    color: rgb(100, 99, 99);
+    font-size: 16px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    width: 100%;
 }
 
 .label {

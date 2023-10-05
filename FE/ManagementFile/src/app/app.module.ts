@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FormsModule } from '@angular/forms';
+import { NgToastModule } from 'ng-angular-popup';
 import axios from 'axios';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -31,6 +32,7 @@ import { ViewDetailFileComponent } from './components/view-detail-file/view-deta
     FontAwesomeModule,
     HttpClientModule,
     FormsModule,
+    NgToastModule 
   ],
   providers: [],
   bootstrap: [AppComponent],
