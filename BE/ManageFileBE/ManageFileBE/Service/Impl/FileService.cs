@@ -4,7 +4,7 @@ using ManageFileBE.Models;
 using ManageFileBE.Repository.Interface;
 using ManageFileBE.Service.Interface;
 
-namespace ManageFileBE.Service
+namespace ManageFileBE.Service.Impl
 {
     public class FileService : IFileService
     {
