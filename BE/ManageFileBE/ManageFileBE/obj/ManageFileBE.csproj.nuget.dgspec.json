@@ -1,33 +1,32 @@
 {
   "format": 1,
   "restore": {
-    "E:\\SmartDev\\ManageFile\\BE\\ManageFileBE\\ManageFileBE\\ManageFileBE.csproj": {}
+    "F:\\Code\\.NET\\ManageFile\\BE\\ManageFileBE\\ManageFileBE\\ManageFileBE.csproj": {}
   },
   "projects": {
-    "E:\\SmartDev\\ManageFile\\BE\\ManageFileBE\\ManageFileBE\\ManageFileBE.csproj": {
+    "F:\\Code\\.NET\\ManageFile\\BE\\ManageFileBE\\ManageFileBE\\ManageFileBE.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\SmartDev\\ManageFile\\BE\\ManageFileBE\\ManageFileBE\\ManageFileBE.csproj",
+        "projectUniqueName": "F:\\Code\\.NET\\ManageFile\\BE\\ManageFileBE\\ManageFileBE\\ManageFileBE.csproj",
         "projectName": "ManageFileBE",
-        "projectPath": "E:\\SmartDev\\ManageFile\\BE\\ManageFileBE\\ManageFileBE\\ManageFileBE.csproj",
-        "packagesPath": "C:\\Users\\Acer\\.nuget\\packages\\",
-        "outputPath": "E:\\SmartDev\\ManageFile\\BE\\ManageFileBE\\ManageFileBE\\obj\\",
+        "projectPath": "F:\\Code\\.NET\\ManageFile\\BE\\ManageFileBE\\ManageFileBE\\ManageFileBE.csproj",
+        "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
+        "outputPath": "F:\\Code\\.NET\\ManageFile\\BE\\ManageFileBE\\ManageFileBE\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+          "F:\\VisualStudio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Acer\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -71,7 +70,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -83,7 +83,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.122\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     }
