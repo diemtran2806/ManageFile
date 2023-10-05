@@ -85,3 +85,17 @@
     margin-top: 20px;
     width: 100%;
 }
+
+.wrapper_filename {
+    display: flex;
+    justify-content: space-between;
+}
+
+.filename_text {
+    margin-right: 10px;
+}
+
+.delete_file {
+    color: rgb(223, 119, 87);
+    cursor: pointer;
+}

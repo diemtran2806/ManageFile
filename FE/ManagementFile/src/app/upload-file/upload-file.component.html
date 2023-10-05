@@ -26,7 +26,12 @@
                     <!-- <ul *ngIf="selectedFile">
                     <li *ngFor="let file of selectedFiles">&#8728; {{ file.name }}</li>
                     </ul> -->
-                    <div *ngIf="selectedFile">{{selectedFile.name}}</div>
+                    <div class="wrapper_filename">
+                        <div *ngIf="selectedFile" class="filename_text">{{selectedFile.name}}</div>
+                        <div *ngIf="selectedFile" class="delete_file" (click)="removeFile()">
+                            <fa-icon [icon]="faTrash"></fa-icon>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="wrapperBtn">

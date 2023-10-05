@@ -1,7 +1,9 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { ServerHttpService } from '../Services/server-http.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import {
+  faTrash
+} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-upload-file',
@@ -14,6 +16,9 @@ export class UploadFileComponent {
   // selectedFiles: File[] = [];
 
   selectedFile: File | null = null;
+  faTrash = faTrash;
+
+
   constructor(
     private serverHttp: ServerHttpService,
     private router: Router,
@@ -28,11 +33,16 @@ export class UploadFileComponent {
     this.selectedFile = event.target.files[0];
   }
 
+  removeFile(): void {
+    this.selectedFile = null;
+  }
+
   uploadFile(): void {
     if (this.selectedFile) {
       const formData = new FormData();
       formData.append('file', this.selectedFile);
       formData.append('author', 'Diem');
+      console.log("formdata",formData.get('author'));
       this.serverHttp.uploadFileToServer(formData)
         .subscribe(response => {
           // Xử lý phản hồi từ máy chủ (nếu cần)
