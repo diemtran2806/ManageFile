@@ -2,30 +2,36 @@
     <div class="wrapperForm">
         <div class="label">Choose the file you want to upload!</div>
         <div class="wrapperFile">
-            <div class="image-container">
-                <img
-            src="../assets/uploadImg.png"
-            alt=""
-            class="uploadImg"
-            (click)="chooseFile()"
-          />
+            <div class="wrapperInputFile" >
+                <div class="image-container" data-tooltip-target="tooltip-dark">
+                    <img
+                        src="../assets/uploadImg.png"
+                        alt=""
+                        class="uploadImg"
+                        (click)="chooseFile()"
+                    />
+                </div>
+                <div id="tooltip-dark" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                    Click here to choose the file
+                    <div class="tooltip-arrow" data-popper-arrow></div>
+                </div>
+                <input
+                    #fileInput
+                    type="file"
+                    multiple
+                    (change)="onFileSelected($event)"
+                    class="input"
+                />
+                <div class="filename"> 
+                    <!-- <ul *ngIf="selectedFile">
+                    <li *ngFor="let file of selectedFiles">&#8728; {{ file.name }}</li>
+                    </ul> -->
+                    <div *ngIf="selectedFile">{{selectedFile.name}}</div>
+                </div>
             </div>
-      <input
-      #fileInput
-        type="file"
-        multiple
-        (change)="onFileSelected($event)"
-        class="input"
-      />
-      <div class="filename"> 
-        <!-- <ul *ngIf="selectedFile">
-          <li *ngFor="let file of selectedFiles">&#8728; {{ file.name }}</li>
-        </ul> -->
-        <div *ngIf="selectedFile">{{selectedFile.name}}</div>
-      </div>
-      <div class="wrapperBtn">
-        <button class="btnUpload" (click)="uploadFile()">Upload</button>
-       </div>
+            <div class="wrapperBtn">
+                <button class="btnUpload" (click)="uploadFile()">Upload</button>
+            </div>
         </div>
     </div>
 </div>
