@@ -3,7 +3,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-﻿namespace ManagerFileBE.Dto
+﻿namespace ManageFileBE.Dto
 {
     public class FileRespon
     {

@@ -12,15 +12,5 @@ build_property.ProjectDir = E:\SmartDev\ManageFile\BE\ManageFileBE\ManageFileBE\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-<<<<<<< HEAD
 build_property.MSBuildProjectDirectory = E:\SmartDev\ManageFile\BE\ManageFileBE\ManageFileBE
 build_property._RazorSourceGeneratorDebug =
-=======
-<<<<<<< HEAD
-build_property.MSBuildProjectDirectory = E:\SmartDev\ManageFile\BE\ManageFileBE\ManageFileBE
-build_property._RazorSourceGeneratorDebug =
-=======
-build_property.MSBuildProjectDirectory = D:\smartdev\ManageFile\BE\ManageFileBE\ManageFileBE
-build_property._RazorSourceGeneratorDebug = 
->>>>>>> 82bc714c63b1be0bdceee1a7de67b9bd0c626fcc
->>>>>>> 669cdf95a095d4c328a2fb0ab6d208e84cec3ce0
