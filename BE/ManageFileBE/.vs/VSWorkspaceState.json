@@ -2,12 +2,15 @@
   "ExpandedNodes": [
     "",
     "\\ManageFileBE",
+    "\\ManageFileBE\\Config",
     "\\ManageFileBE\\Controllers",
-    "\\ManageFileBE\\Models",
-    "\\ManageFileBE\\Repository",
-    "\\ManageFileBE\\Repository\\Impl",
-    "\\ManageFileBE\\Repository\\Interface"
+    "\\ManageFileBE\\Dto",
+    "\\ManageFileBE\\Migrations",
+    "\\ManageFileBE\\obj",
+    "\\ManageFileBE\\Service",
+    "\\ManageFileBE\\Service\\Impl",
+    "\\ManageFileBE\\Service\\Interface"
   ],
-  "SelectedNode": "\\ManageFileBE\\Models\\FileEntity.cs",
+  "SelectedNode": "\\ManageFileBE\\Service\\Impl\\FileService.cs",
   "PreviewInSolutionExplorer": false
 }
