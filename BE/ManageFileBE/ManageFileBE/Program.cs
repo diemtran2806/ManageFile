@@ -1,27 +1,18 @@
 using ManageFileBE.Config;
-using ManageFileBE.Repository;
 using ManageFileBE.Repository.Impl;
 using ManageFileBE.Repository.Interface;
 using ManageFileBE.Service.Impl;
 using ManageFileBE.Service.Interface;
 using Microsoft.EntityFrameworkCore;
-using ManageFileBE.Repository.Interface;
-using ManageFileBE.Repository.Impl;
-using ManageFileBE.Service.Interface;
-using ManageFileBE.Service.Impl;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllers();
-<<<<<<< HEAD
 builder.Services.AddScoped<IFileStore, FileStore>();
 builder.Services.AddScoped<IFileService, FileService>();
 builder.Services.AddScoped<IFileRepository, FileRepository>();
-=======
-
->>>>>>> 00d9a6e68969c02c14a33c00fc06eda056d7ca96
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddDbContext<ApplicationDbContext>(option =>
 {

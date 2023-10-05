@@ -53,8 +53,6 @@ namespace ManageFileBE.Controllers
             try
             {
                 FileRespon file = this._fileService.viewFileById(id);
-
-                string contentType = "image/jpeg";
                 return File(file.FileBytes, file.ContentType);
             }
             catch (Exception e)
@@ -73,7 +71,7 @@ namespace ManageFileBE.Controllers
                 string param2 = file.FileName;
                 bool isSave = this._fileService.saveFile(author, file);
                 if (isSave == true)
-                    return Ok();
+                    return Ok("Upload Ok");
                 else
                     return StatusCode(500, "An internal server error occurred.");
             }
