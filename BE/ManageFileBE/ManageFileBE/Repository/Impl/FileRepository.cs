@@ -3,7 +3,7 @@ using ManageFileBE.Config;
 using ManageFileBE.Models;
 using ManageFileBE.Repository.Interface;
 
-namespace ManageFileBE.Repository
+namespace ManageFileBE.Repository.Impl
 {
     public class FileRepository : IFileRepository
     {
