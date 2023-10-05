@@ -25,7 +25,7 @@ export class ServerHttpService {
       'Content-Type': 'application/json',
     }),
   };
-  private REST_API_SERVER = 'https://localhost:5000/api';
+  private REST_API_SERVER = 'https://localhost:7096/api';
 
   constructor(private httpClient: HttpClient) {}
 
