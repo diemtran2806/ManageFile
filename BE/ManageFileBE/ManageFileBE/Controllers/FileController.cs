@@ -7,6 +7,6 @@ namespace ManageFileBE.Controllers
     [ApiController]
     public class FileController : ControllerBase
     {
-
+        []
     }
 }
