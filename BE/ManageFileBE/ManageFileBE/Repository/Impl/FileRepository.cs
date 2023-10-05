@@ -1,20 +1,21 @@
-﻿using ManageFileBE.Config;
+
+using ManageFileBE.Config;
 using ManageFileBE.Models;
 using ManageFileBE.Repository.Interface;
 
-namespace ManageFileBE.Repository
+namespace ManageFileBE.Repository.Impl
 {
     public class FileRepository : IFileRepository
     {
         private readonly ApplicationDbContext _dbContext;
         public FileRepository(ApplicationDbContext dbContext)
         {
-            _dbContext = dbContext;
+            this._dbContext = dbContext;
         }
         public bool deleteFile(FileEntity fileEntity)
         {
-            _dbContext.Remove(fileEntity);
-            return _dbContext.SaveChanges() > 0;
+            this._dbContext.Remove(fileEntity);
+            return this._dbContext.SaveChanges() > 0;
         }
 
         public ICollection<FileEntity> getAllFile()
@@ -24,13 +25,13 @@ namespace ManageFileBE.Repository
 
         public FileEntity getFileById(int id)
         {
-            return _dbContext.FileEntity.Where(p => p.Id == id).FirstOrDefault();
+           return this._dbContext.FileEntity.Where(f => f.Id == id).FirstOrDefault();
         }
 
         public bool saveFile(FileEntity fileEntity)
         {
-            _dbContext.Add(fileEntity);
-            return _dbContext.SaveChanges() > 0;
+            this._dbContext.Add(fileEntity);
+            return this._dbContext.SaveChanges() > 0;
         }
     }
 }
