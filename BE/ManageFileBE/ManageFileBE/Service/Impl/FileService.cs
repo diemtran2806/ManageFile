@@ -18,7 +18,7 @@ namespace ManageFileBE.Service
         public bool deleteFile(int id)
         {
             FileEntity fileEntity = this._fileRepository.getFileById(id);
-
+            
             if (fileEntity != null)
             {
                 bool check =  this._fileRepository.deleteFile(fileEntity);

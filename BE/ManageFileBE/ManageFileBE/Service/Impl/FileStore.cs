@@ -43,7 +43,7 @@ namespace ManageFileBE.Service.Impl
             }
             else
             {
-                throw new NotFoundException("Hình ảnh không tồn tại.");
+                throw new NotFoundException("File không tồn tại.");
             }
         }
     }
