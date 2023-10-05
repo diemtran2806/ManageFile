@@ -1,8 +1,8 @@
-﻿using FileManager.Dto;
-using ManageFileBE.Exceptions;
+﻿using ManageFileBE.Exceptions;
 using ManageFileBE.Models;
 using ManageFileBE.Repository.Interface;
 using ManageFileBE.Service.Interface;
+using ManagerFileBE.Dto;
 
 namespace ManageFileBE.Service.Impl
 {

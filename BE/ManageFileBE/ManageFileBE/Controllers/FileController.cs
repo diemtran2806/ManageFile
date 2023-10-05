@@ -1,9 +1,9 @@
-﻿using ManageFileBE.Config;
+
+﻿using ManageFileBE.Models;
 using ManageFileBE.Service.Interface;
-using ManageFileBE.Models;
-using Microsoft.AspNetCore.Http;
+using ManagerFileBE.Dto;
 using Microsoft.AspNetCore.Mvc;
-using FileManager.Dto;
+
 
 namespace ManageFileBE.Controllers
 {
@@ -13,9 +13,10 @@ namespace ManageFileBE.Controllers
     {
         private IFileService _fileService;
 
+
         public FileController(IFileService fileService)
         {
-            this._fileService = fileService;
+            _fileService = fileService;
         }
 
         [HttpGet]
@@ -30,24 +31,7 @@ namespace ManageFileBE.Controllers
             {
                 return NotFound();
             }
-        }
 
-        [HttpPost]
-        [Route("upload")]
-        public IActionResult UploadFile([FromForm] IFormFile file, [FromForm] string author)
-        {
-            try
-            {
-                bool isSave = this._fileService.saveFile(author, file);
-                if (isSave)
-                    return Ok("File upload successfully");
-                else
-                    return StatusCode(500, "An internal server error occurred.");
-            }
-            catch (Exception e)
-            {
-                return StatusCode(500, "An internal server error occurred.");
-            }
         }
 
         [HttpGet("{id}")]
@@ -63,13 +47,14 @@ namespace ManageFileBE.Controllers
                 return NotFound();
             }
         }
-
         [HttpGet("view/{id}")]
         public IActionResult ViewById(int id)
         {
             try
             {
                 FileRespon file = this._fileService.viewFileById(id);
+
+                string contentType = "image/jpeg";
                 return File(file.FileBytes, file.ContentType);
             }
             catch (Exception e)
@@ -78,5 +63,38 @@ namespace ManageFileBE.Controllers
             }
         }
 
+        [HttpPost]
+        public IActionResult Post([FromForm] IFormFile file, [FromForm] string author)
+        {
+
+            try
+            {
+                string param1 = author;
+                string param2 = file.FileName;
+                bool isSave = this._fileService.saveFile(author, file);
+                if (isSave == true)
+                    return Ok();
+                else
+                    return StatusCode(500, "An internal server error occurred.");
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, "An internal server error occurred.");
+            }
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            try
+            {
+                var check = this._fileService.deleteFile(id);
+                return Ok();
+            }
+            catch (Exception e)
+            {
+                return NotFound();
+            }
+        }
     }
 }

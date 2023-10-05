@@ -1,5 +1,5 @@
-﻿using FileManager.Dto;
-using ManageFileBE.Models;
+﻿using ManageFileBE.Models;
+using ManagerFileBE.Dto;
 
 namespace ManageFileBE.Service.Interface
 {
