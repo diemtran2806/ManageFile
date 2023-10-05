@@ -10,6 +10,6 @@ namespace ManageFileBE.Config
 
         }
 
-        public DbSet<FileUpload> Files { get; set; }
+        public DbSet<FileEntity> FileEntity { get; set; }
     }
 }
