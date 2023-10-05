@@ -1,4 +1,4 @@
-﻿namespace FileManager.Dto
+﻿namespace ManagerFileBE.Dto
 {
     public class FileRespon
     {
