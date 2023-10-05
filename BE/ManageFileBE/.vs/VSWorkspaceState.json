@@ -8,6 +8,6 @@
     "\\ManageFileBE\\Repository\\Impl",
     "\\ManageFileBE\\Repository\\Interface"
   ],
-  "SelectedNode": "\\ManageFileBE.sln",
+  "SelectedNode": "\\ManageFileBE\\Models\\FileEntity.cs",
   "PreviewInSolutionExplorer": false
 }
