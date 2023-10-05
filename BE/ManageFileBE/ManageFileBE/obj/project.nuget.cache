@@ -1,6 +1,14 @@
 {
   "version": 2,
+<<<<<<< HEAD
   "dgSpecHash": "2MJJtXSG+5O9v3X6LEk8k55HBcR8lgbVG25EUjxwtwjjD9o6EQnzz4jWX+K1O/o2/vrdR4ScY5aq5VOQognTXA==",
+=======
+<<<<<<< HEAD
+  "dgSpecHash": "2MJJtXSG+5O9v3X6LEk8k55HBcR8lgbVG25EUjxwtwjjD9o6EQnzz4jWX+K1O/o2/vrdR4ScY5aq5VOQognTXA==",
+=======
+  "dgSpecHash": "O39nVq78ljgR01AL+ltC57P4VIolh5Lqr+MQHr6Zg4mGAeBJ+CUjH/lapAPGYVKYLRtlwWw+Jlas+61CZ+cOMA==",
+>>>>>>> 82bc714c63b1be0bdceee1a7de67b9bd0c626fcc
+>>>>>>> 669cdf95a095d4c328a2fb0ab6d208e84cec3ce0
   "success": true,
   "projectFilePath": "E:\\SmartDev\\ManageFile\\BE\\ManageFileBE\\ManageFileBE\\ManageFileBE.csproj",
   "expectedPackageFiles": [

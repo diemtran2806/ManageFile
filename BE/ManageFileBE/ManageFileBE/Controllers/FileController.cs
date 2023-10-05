@@ -12,8 +12,6 @@ namespace ManageFileBE.Controllers
     public class FileController : ControllerBase
     {
         private IFileService _fileService;
-
-
         public FileController(IFileService fileService)
         {
             _fileService = fileService;
@@ -64,7 +62,6 @@ namespace ManageFileBE.Controllers
         [HttpPost]
         public IActionResult Post([FromForm] IFormFile file, [FromForm] string author)
         {
-
             try
             {
                 string param1 = author;

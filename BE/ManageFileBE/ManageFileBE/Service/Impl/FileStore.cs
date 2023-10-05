@@ -5,6 +5,7 @@ namespace ManageFileBE.Service.Impl
 {
     public class FileStore : IFileStore
     {
+
         public bool deleteFile(string fileName)
         {
             string filePath = Path.Combine(IFileStore._uploadsPath, fileName);
@@ -19,24 +20,9 @@ namespace ManageFileBE.Service.Impl
             }
         }
 
-        public bool storeFile(IFormFile file)
+        public byte[] readFileByName(string fileName)
         {
-            if (file == null || file.Length == 0)
-            {
-                return false;
-            }
-            var path = IFileStore._uploadsPath;
-            var filePath = Path.Combine(path, file.FileName);
 
-            using (var stream = new FileStream(filePath, FileMode.Create))
-            {
-                file.CopyToAsync(stream);
-            }
-            return true;
-        }
-
-        public byte[] viewFileByteCode(string fileName)
-        {
             string filePath = Path.Combine(IFileStore._uploadsPath, fileName);
             if (File.Exists(filePath))
             {
@@ -47,6 +33,20 @@ namespace ManageFileBE.Service.Impl
             {
                 throw new NotFoundException("Hình ảnh không tồn tại.");
             }
+        }
+
+        public bool saveFile(IFormFile file)
+        {
+            if (file == null || file.Length == 0)
+            {
+                return false;
+            }
+            var filePath = Path.Combine(IFileStore._uploadsPath, file.FileName);
+            using (var stream = new FileStream(filePath, FileMode.Create))
+            {
+                file.CopyToAsync(stream);
+            }
+            return true;
         }
     }
 }

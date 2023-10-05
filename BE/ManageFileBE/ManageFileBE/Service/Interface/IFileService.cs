@@ -1,10 +1,13 @@
-﻿using ManageFileBE.Models;
-using ManagerFileBE.Dto;
+
+﻿using ManageFileBE.Dto;
+using ManageFileBE.Models;
+
 
 namespace ManageFileBE.Service.Interface
 {
     public interface IFileService
     {
+
        
         public ICollection<FileEntity> getAllFile();
         public FileEntity getFileById(int id);

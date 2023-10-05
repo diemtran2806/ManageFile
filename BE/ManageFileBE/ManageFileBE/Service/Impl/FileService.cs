@@ -1,3 +1,4 @@
+
 ﻿using ManageFileBE.Exceptions;
 using ManageFileBE.Models;
 using ManageFileBE.Repository.Interface;
@@ -18,7 +19,6 @@ namespace ManageFileBE.Service.Impl
         public bool deleteFile(int id)
         {
             FileEntity fileEntity = this._fileRepository.getFileById(id);
-
             if (fileEntity != null)
             {
                 bool check =  this._fileRepository.deleteFile(fileEntity);
@@ -30,6 +30,19 @@ namespace ManageFileBE.Service.Impl
             }
             throw new NotFoundException("Không tìm thấy file chỉ định");
         }
+
+
+        public FileEntity getFileById(int id)
+        {
+            FileEntity fileEntity = this._fileRepository.getFileById(id);
+            if (fileEntity != null)
+                return fileEntity;
+            else throw new NotFoundException("Không tìm thấy file");
+        }
+
+        public bool saveFile(string author, IFormFile file)
+        {
+            if (_fileStore.saveFile(file) == true)
 
         public ICollection<FileEntity> getAllFile()
         {
@@ -49,19 +62,16 @@ namespace ManageFileBE.Service.Impl
 
         public bool saveFile(string author, IFormFile file)
         {
-
             if (_fileStore.storeFile(file) == true)
             {
                 FileEntity fileEntity = new FileEntity();
                 fileEntity.FileName = file.FileName;
                 fileEntity.Author = author;
                 fileEntity.UploadDate = DateTime.Now;
-               
                 return this._fileRepository.saveFile(fileEntity);
             }
             return false;
         }
-
         public FileRespon viewFileById(int id)
         {
             FileEntity fileEntity = this._fileRepository.getFileById(id);
@@ -81,6 +91,7 @@ namespace ManageFileBE.Service.Impl
             }
             throw new NotFoundException("Không tim thấy file");
         }
+
         public String getContentType(String fileName)
         {
             fileName = fileName.Trim().ToLower();
