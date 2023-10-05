@@ -70,8 +70,6 @@ namespace ManageFileBE.Controllers
             try
             {
                 FileRespon file = this._fileService.viewFileById(id);
-
-                string contentType = "image/jpeg";
                 return File(file.FileBytes, file.ContentType);
             }
             catch (Exception e)
