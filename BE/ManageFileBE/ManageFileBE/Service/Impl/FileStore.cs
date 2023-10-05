@@ -25,7 +25,9 @@ namespace ManageFileBE.Service.Impl
             {
                 return false;
             }
-            var filePath = Path.Combine(IFileStore._uploadsPath, file.FileName);
+            var path = IFileStore._uploadsPath;
+            var filePath = Path.Combine(path, file.FileName);
+
             using (var stream = new FileStream(filePath, FileMode.Create))
             {
                 file.CopyToAsync(stream);
