@@ -3,7 +3,7 @@
 using ManageFileBE.Models;
 using ManageFileBE.Repository.Interface;
 using ManageFileBE.Service.Interface;
-using ManagerFileBE.Dto;
+using ManageFileBE.Dto;
 
 namespace ManageFileBE.Service.Impl
 {
@@ -16,21 +16,11 @@ namespace ManageFileBE.Service.Impl
             this._fileRepository = fileRepository;
             this._fileStore = fileStore;
         }
-        public bool deleteFile(int id)
-        {
-            FileEntity fileEntity = this._fileRepository.getFileById(id);
-            if (fileEntity != null)
-            {
-                bool check =  this._fileRepository.deleteFile(fileEntity);
-                if (check)
-                {
-                    this._fileStore.deleteFile(fileEntity.FileName);
-                    return true;
-                }
-            }
-            throw new NotFoundException("Không tìm thấy file chỉ định");
-        }
 
+        public ICollection<FileEntity> getAllFile()
+        {
+            return this._fileRepository.getAllFile();
+        }
 
         public FileEntity getFileById(int id)
         {
@@ -38,39 +28,6 @@ namespace ManageFileBE.Service.Impl
             if (fileEntity != null)
                 return fileEntity;
             else throw new NotFoundException("Không tìm thấy file");
-        }
-
-        public bool saveFile(string author, IFormFile file)
-        {
-            if (_fileStore.saveFile(file) == true)
-
-        public ICollection<FileEntity> getAllFile()
-        {
-            ICollection<FileEntity> files = this._fileRepository.getAllFile();
-            if (files.Count() > 0)
-                return files;
-            else throw new NotFoundException("Danh sách rỗng");
-        }
-
-        public FileEntity getFileById(int id)
-        {
-            FileEntity files = this._fileRepository.getFileById(id);
-            if (files != null)
-                return files;
-            else throw new NotFoundException("Không tìm thấy file");
-        }
-
-        public bool saveFile(string author, IFormFile file)
-        {
-            if (_fileStore.storeFile(file) == true)
-            {
-                FileEntity fileEntity = new FileEntity();
-                fileEntity.FileName = file.FileName;
-                fileEntity.Author = author;
-                fileEntity.UploadDate = DateTime.Now;
-                return this._fileRepository.saveFile(fileEntity);
-            }
-            return false;
         }
         public FileRespon viewFileById(int id)
         {
@@ -90,6 +47,34 @@ namespace ManageFileBE.Service.Impl
                 }
             }
             throw new NotFoundException("Không tim thấy file");
+        }
+       
+
+        public bool saveFile(string author, IFormFile file)
+        {
+            if (_fileStore.storeFile(file) == true)
+            {
+                FileEntity fileEntity = new FileEntity();
+                fileEntity.Author = author;
+                fileEntity.FileName = file.FileName;
+                fileEntity.UploadDate = DateTime.Now;
+                return this._fileRepository.saveFile(fileEntity);
+            }
+            return false; 
+        }
+        public bool deleteFile(int id)
+        {
+            FileEntity fileEntity = this._fileRepository.getFileById(id);
+            if (fileEntity != null)
+            {
+                bool check = this._fileRepository.deleteFile(fileEntity);
+                if (check)
+                {
+                    this._fileStore.deleteFile(fileEntity.FileName);
+                    return true;
+                }
+            }
+            throw new NotFoundException("Không tìm thấy file chỉ định");
         }
 
         public String getContentType(String fileName)
@@ -123,5 +108,7 @@ namespace ManageFileBE.Service.Impl
             else
                 return "application/octet-stream";
         }
+
+        
     }
 }

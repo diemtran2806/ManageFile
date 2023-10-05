@@ -6,21 +6,21 @@ namespace ManageFileBE.Service.Impl
     public class FileStore : IFileStore
     {
 
-        public bool deleteFile(string fileName)
+        public bool storeFile(IFormFile file)
         {
-            string filePath = Path.Combine(IFileStore._uploadsPath, fileName);
-            if (File.Exists(filePath))
+            if (file == null || file.Length == 0)
             {
-                System.IO.File.Delete(filePath);
-                return true;
+                return false;
             }
-            else
+            var filePath = Path.Combine(IFileStore._uploadsPath, file.FileName);
+            using (var stream = new FileStream(filePath, FileMode.Create))
             {
-                throw new NotFoundException("Không tìm thấy tệp tin.");
+                file.CopyToAsync(stream);
             }
+            return true;
         }
 
-        public byte[] readFileByName(string fileName)
+        public byte[] viewFileByteCode(string fileName)
         {
 
             string filePath = Path.Combine(IFileStore._uploadsPath, fileName);
@@ -35,18 +35,20 @@ namespace ManageFileBE.Service.Impl
             }
         }
 
-        public bool saveFile(IFormFile file)
+        public bool deleteFile(string fileName)
         {
-            if (file == null || file.Length == 0)
+            string filePath = Path.Combine(IFileStore._uploadsPath, fileName);
+            if (File.Exists(filePath))
             {
-                return false;
+                System.IO.File.Delete(filePath);
+                return true;
             }
-            var filePath = Path.Combine(IFileStore._uploadsPath, file.FileName);
-            using (var stream = new FileStream(filePath, FileMode.Create))
+            else
             {
-                file.CopyToAsync(stream);
+                throw new NotFoundException("Không tìm thấy tệp tin.");
             }
-            return true;
         }
+
+
     }
 }
