@@ -1,0 +1,13 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\ManageFileBE",
+    "\\ManageFileBE\\Controllers",
+    "\\ManageFileBE\\Models",
+    "\\ManageFileBE\\Repository",
+    "\\ManageFileBE\\Repository\\Impl",
+    "\\ManageFileBE\\Repository\\Interface"
+  ],
+  "SelectedNode": "\\ManageFileBE.sln",
+  "PreviewInSolutionExplorer": false
+}
