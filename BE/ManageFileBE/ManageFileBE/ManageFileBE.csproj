@@ -4,6 +4,7 @@
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <LangVersion>preview</LangVersion>
   </PropertyGroup>
 
   <ItemGroup>
@@ -24,7 +25,11 @@
   </ItemGroup>
 
   <ItemGroup>
+<<<<<<< HEAD
     <Folder Include="uploads\" />
+=======
+    <Folder Include="Uploads\" />
+>>>>>>> dfe0722ed57857e90703b368c4b58c50fd15a953
   </ItemGroup>
 
 </Project>

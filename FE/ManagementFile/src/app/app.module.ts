@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { FormsModule } from '@angular/forms';
+import { NgToastModule } from 'ng-angular-popup';
+import axios from 'axios';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -11,6 +14,7 @@ import { MainLayoutComponent } from './components/main-layout/main-layout.compon
 import { HttpClientModule } from '@angular/common/http';
 import { UploadFileComponent } from './upload-file/upload-file.component';
 import { View } from './View/view.component';
+import { ViewDetailFileComponent } from './components/view-detail-file/view-detail-file.component';
 
 @NgModule({
   declarations: [
@@ -19,9 +23,17 @@ import { View } from './View/view.component';
     LoginComponent,
     MainLayoutComponent,
     UploadFileComponent,
-    View
+    View,
+    ViewDetailFileComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FontAwesomeModule, HttpClientModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FontAwesomeModule,
+    HttpClientModule,
+    FormsModule,
+    NgToastModule 
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

@@ -6,6 +6,7 @@ namespace ManageFileBE.Repository.Interface
     {
         public ICollection<FileEntity> getAllFile();
         public FileEntity getFileById(int id);
+        public bool updateFile(FileEntity fileEntity);
         public bool saveFile(FileEntity fileEntity);
         public bool deleteFile(FileEntity fileEntity);
     }

@@ -2,15 +2,18 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
+    height: 96%;
+    background-color: white;
+    // box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    margin-left: 1%;
+    width: 96%;
 }
 
 .wrapperForm {
     width: 50%;
     height: 60%;
     padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    border-radius: 20px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -24,8 +27,22 @@
 
 .image-container {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 100%;
+    cursor: pointer;
+    border: 1px dashed rgb(100, 99, 99);
+    padding: 20px;
+}
+
+.content_text {
+    display: flex;
+    justify-content: center;
+    color: rgb(100, 99, 99);
+    font-size: 16px;
+    margin-bottom: 20px;
+    margin-top: 20px;
     width: 100%;
 }
 
@@ -35,7 +52,7 @@
     color: rgb(87, 87, 87);
     font-size: 22px;
     font-weight: 600;
-    margin-bottom: 20px;
+    margin-bottom: 100px;
     width: 100%;
 }
 
@@ -58,19 +75,38 @@
     border-radius: 5px;
     cursor: pointer;
     margin-top: 20px;
+    &:hover {
+        background-color: rgb(84, 168, 102);
+    }
 }
 
 .wrapperBtn {
     display: flex;
     justify-content: center;
     width: 100%;
+    margin-top: 30px;
 }
 
 .filename {
     display: flex;
     justify-content: center;
     color: rgb(100, 99, 99);
-    font-size: 20px;
+    font-size: 16px;
     margin-bottom: 20px;
+    margin-top: 20px;
     width: 100%;
+}
+
+.wrapper_filename {
+    display: flex;
+    justify-content: space-between;
+}
+
+.filename_text {
+    margin-right: 10px;
+}
+
+.delete_file {
+    color: rgb(223, 119, 87);
+    cursor: pointer;
 }

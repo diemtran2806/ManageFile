@@ -1,10 +1,11 @@
-﻿using FileManager.Dto;
-using ManageFileBE.Exceptions;
+
+﻿using ManageFileBE.Exceptions;
 using ManageFileBE.Models;
 using ManageFileBE.Repository.Interface;
 using ManageFileBE.Service.Interface;
+using ManageFileBE.Dto;
 
-namespace ManageFileBE.Service
+namespace ManageFileBE.Service.Impl
 {
     public class FileService : IFileService
     {
@@ -15,6 +16,7 @@ namespace ManageFileBE.Service
             this._fileRepository = fileRepository;
             this._fileStore = fileStore;
         }
+<<<<<<< HEAD
         public bool deleteFile(int id)
         {
             FileEntity fileEntity = this._fileRepository.getFileById(id);
@@ -30,38 +32,25 @@ namespace ManageFileBE.Service
             }
             throw new NotFoundException("Không tìm thấy file chỉ định");
         }
+=======
+>>>>>>> dfe0722ed57857e90703b368c4b58c50fd15a953
 
         public ICollection<FileEntity> getAllFile()
         {
-            ICollection<FileEntity> files = this._fileRepository.getAllFile();
-            if (files.Count() > 0)
-                return files;
-            else throw new NotFoundException("Danh sách rỗng");
+            ICollection < FileEntity > fileEntities =  this._fileRepository.getAllFile();
+            if (fileEntities.Count > 0)
+                return fileEntities;
+            else
+                throw new NotFoundException("Danh sách rỗng");
         }
 
         public FileEntity getFileById(int id)
         {
-            FileEntity files = this._fileRepository.getFileById(id);
-            if (files != null)
-                return files;
+            FileEntity fileEntity = this._fileRepository.getFileById(id);
+            if (fileEntity != null)
+                return fileEntity;
             else throw new NotFoundException("Không tìm thấy file");
         }
-
-        public bool saveFile(string author, IFormFile file)
-        {
-
-            if (_fileStore.storeFile(file) == true)
-            {
-                FileEntity fileEntity = new FileEntity();
-                fileEntity.FileName = file.FileName;
-                fileEntity.Author = author;
-                fileEntity.UploadDate = DateTime.Now;
-               
-                return this._fileRepository.saveFile(fileEntity);
-            }
-            return false;
-        }
-
         public FileRespon viewFileById(int id)
         {
             FileEntity fileEntity = this._fileRepository.getFileById(id);
@@ -81,6 +70,46 @@ namespace ManageFileBE.Service
             }
             throw new NotFoundException("Không tim thấy file");
         }
+       
+
+        public async Task<Boolean> saveFileAsync(string author, IFormFile file)
+        {
+            String fileName = await _fileStore.storeFile(file);
+            FileEntity fileEntity = new FileEntity();
+            fileEntity.Author = author;
+            fileEntity.FileName = fileName;
+            fileEntity.UploadDate = DateTime.Now;
+            return this._fileRepository.saveFile(fileEntity);
+        }
+
+        public bool renameFile(int id, String newName)
+        {
+            FileEntity fileEntity = this._fileRepository.getFileById(id);
+            if (fileEntity != null)
+            {
+                if(_fileStore.renameFile(fileEntity.FileName, newName) == true)
+                {
+                    fileEntity.FileName = newName;
+                    return this._fileRepository.updateFile(fileEntity);
+                }
+            }
+            throw new NotFoundException("Không tìm thấy file chỉ định");
+        }
+        public bool deleteFile(int id)
+        {
+            FileEntity fileEntity = this._fileRepository.getFileById(id);
+            if (fileEntity != null)
+            {
+                bool check = this._fileRepository.deleteFile(fileEntity);
+                if (check)
+                {
+                    this._fileStore.deleteFile(fileEntity.FileName);
+                    return true;
+                }
+            }
+            throw new NotFoundException("Không tìm thấy file chỉ định");
+        }
+
         public String getContentType(String fileName)
         {
             fileName = fileName.Trim().ToLower();
@@ -112,5 +141,7 @@ namespace ManageFileBE.Service
             else
                 return "application/octet-stream";
         }
+
+        
     }
 }
