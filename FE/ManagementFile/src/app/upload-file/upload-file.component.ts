@@ -43,7 +43,7 @@ export class UploadFileComponent {
     if (this.selectedFile) {
       const formData = new FormData();
       formData.append('file', this.selectedFile);
-      formData.append('author', 'Diem');
+      formData.append('author', localStorage.getItem('username') || '');
       // this.serverHttp.uploadFileToServer(formData)
       //   .subscribe(response => {
       //     // Xử lý phản hồi từ máy chủ (nếu cần)
