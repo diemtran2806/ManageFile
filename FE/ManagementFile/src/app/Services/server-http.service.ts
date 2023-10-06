@@ -44,4 +44,12 @@ export class ServerHttpService {
       },
     })
   }
+
+  getFileById(id: string) {
+    return axios.get(`https://localhost:5050/api/file/${id}`);
+  }
+
+  getFileViewById(id: string) {
+    return axios.get(`https://localhost:5050/api/file/view/${id}`);
+  }
 }

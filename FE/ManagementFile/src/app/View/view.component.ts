@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ServerHttpService } from '../Services/server-http.service';
+import { MenuItem } from 'primeng/api';
 
 interface FileObject {
   id: number;
@@ -18,10 +19,12 @@ export class View implements OnInit {
 
   fileUpload: FileObject[] = [];
   fileDeleteId!: number;
+  items: MenuItem[] | undefined;
 
   constructor(private api: ServerHttpService) {}
 
   ngOnInit(): void {
+    console.log(this.fileDeleteId);
     this.api
       .getAllFile()
       .then((response) => {
