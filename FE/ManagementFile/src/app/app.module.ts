@@ -11,6 +11,8 @@ import { MainLayoutComponent } from './components/main-layout/main-layout.compon
 import { HttpClientModule } from '@angular/common/http';
 import { UploadFileComponent } from './upload-file/upload-file.component';
 import { View } from './View/view.component';
+import { Folder } from './folder/folder.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -19,9 +21,10 @@ import { View } from './View/view.component';
     LoginComponent,
     MainLayoutComponent,
     UploadFileComponent,
-    View
+    View,
+    Folder
   ],
-  imports: [BrowserModule, AppRoutingModule, FontAwesomeModule, HttpClientModule],
+  imports: [BrowserModule, AppRoutingModule, FontAwesomeModule, HttpClientModule,FormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })

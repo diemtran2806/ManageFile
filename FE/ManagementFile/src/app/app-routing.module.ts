@@ -5,6 +5,7 @@ import { LoginComponent } from './components/login/login.component';
 import { MainLayoutComponent } from './components/main-layout/main-layout.component';
 import { UploadFileComponent } from './upload-file/upload-file.component';
 import { View } from './View/view.component';
+import { Folder } from './folder/folder.component';
 
 const routes: Routes = [
   {
@@ -20,9 +21,13 @@ const routes: Routes = [
     component: MainLayoutComponent,
     children: [
       { path: 'upload-file', component: UploadFileComponent },
-      { path: 'view', component: View}
+      { path: 'view', component: View},
+      {
+        path: 'folder',
+        component: Folder,
+      },
     ],
-  },
+  }
 ];
 
 @NgModule({

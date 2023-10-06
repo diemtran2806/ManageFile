@@ -14,14 +14,13 @@
                 <i class="fa-solid fa-sort-down"></i>
             </div>
             <div class="view-header_sider">
-                <select class="view-header_sider_select">
+                <select #type class="view-header_sider_select" (change)="sort(type.value)">
                     <option value="0">Type</option>
                     <option value="1">Word</option>
                     <option value="2">PDF</option>
                     <option value="3">Excel</option>
-                    <option value="4">Img</option>
                 </select>
-                <select class="view-header_sider_select">
+                <select #day class="view-header_sider_select" (change)="sortday(day.value)">
                     <option value="0">Time</option>
                     <option value="1">Today</option>
                     <option value="2">Yesterday</option>
@@ -30,164 +29,80 @@
                 </select>
             </div>
         </div>
-        <div class="view-body">
+        <div class="view-body" [class.filter]="filter">
         <p class="view-body_suggestion"> Your Suggestion</p>
         <div class="view-body_content">
-            <div class="view-body_content_main">
-                <p class="view-body_content_main_name">Thái Văn Thiện</p>
-                <img src="../../assets/img-excel.png" alt="" class="view-body_content_main_img">
+            <div class="view-body_content_main" *ngFor="let sFile of listSuggestionFile.slice(0,4)">
+                <p class="view-body_content_main_name">{{sFile.ten}}</p>
+                <img *ngIf="(sFile.ten).includes('.word')" src="../../assets/img-word.png" alt="" class="view-body_content_main_img">
+                    <img *ngIf="(sFile.ten).includes('.excel')" src="../../assets/img-excel.png" alt="" class="view-body_content_main_img">
+                    <img *ngIf="(sFile.ten).includes('.pdf')" src="../../assets/img-pdf.png" alt="" class="view-body_content_main_img">
+                <p class="view-body_content_main_date">Day: {{sFile.ngay}}</p>
             </div>
-            <div class="view-body_content_main">
-                <p class="view-body_content_main_name">Thái Văn Thiện</p>
-                <img src="../../assets/img-pdf.png" alt="" class="view-body_content_main_img">
-            </div>
-            <div class="view-body_content_main">
-                <p class="view-body_content_main_name">Thái Văn Thiện</p>
-                <img src="../../assets/img-word.png" alt="" class="view-body_content_main_img">
-            </div>
-            <div class="view-body_content_main">
-                <p class="view-body_content_main_name">Thái Văn Thiện</p>
-                <img src="../../assets/img-excel.png" alt="" class="view-body_content_main_img">
-            </div>
-            
         </div>
         <div class="view-body_folder">
             <p class="view-body_folder_name"> Folder</p>
             <div class="view-body_folder_main">
-                <div class="view-body_folder_main_content">
+                <div class="view-body_folder_main_content" *ngFor="let folder of listFolder, let i=index" >
                     <i class="fa-solid fa-folder"></i>
-                    <p class="view-body_folder_main_content_name"> Thái Văn Thiện</p>
-                    <i class="fa-solid fa-ellipsis-vertical"></i>
+                    <p class="view-body_folder_main_content_name" (click)="viewfolder(folder.id)"  routerLink="/folder"> {{folder.foldername}} </p>
+                    <i class="fa-solid fa-trash trashfolder"></i>
                 </div>
-                <div class="view-body_folder_main_content">
-                    <i class="fa-solid fa-folder"></i>
-                    <p class="view-body_folder_main_content_name"> Thái Văn Thiện</p>
-                    <i class="fa-solid fa-ellipsis-vertical"></i>
-                </div>
-                <div class="view-body_folder_main_content">
-                    <i class="fa-solid fa-folder"></i>
-                    <p class="view-body_folder_main_content_name"> Thái Văn Thiện</p>
-                    <i class="fa-solid fa-ellipsis-vertical"></i>
-                </div>
-                <div class="view-body_folder_main_content">
-                    <i class="fa-solid fa-folder"></i>
-                    <p class="view-body_folder_main_content_name"> Thái Văn Thiện</p>
-                    <i class="fa-solid fa-ellipsis-vertical"></i>
-                </div>
-                <div class="view-body_folder_main_content">
-                    <i class="fa-solid fa-folder"></i>
-                    <p class="view-body_folder_main_content_name"> Thái Văn Thiện</p>
-                    <i class="fa-solid fa-ellipsis-vertical"></i>
-                </div>
-                <div class="view-body_folder_main_content">
-                    <i class="fa-solid fa-folder"></i>
-                    <p class="view-body_folder_main_content_name"> Thái Văn Thiện</p>
-                    <i class="fa-solid fa-ellipsis-vertical"></i>
-                </div>
-                <div class="view-body_folder_main_content">
-                    <i class="fa-solid fa-folder"></i>
-                    <p class="view-body_folder_main_content_name"> Thái Văn Thiện</p>
-                    <i class="fa-solid fa-ellipsis-vertical"></i>
-                </div>
-                <div class="view-body_folder_main_content">
-                    <i class="fa-solid fa-folder"></i>
-                    <p class="view-body_folder_main_content_name"> Thái Văn Thiện</p>
-                    <i class="fa-solid fa-ellipsis-vertical"></i>
-                </div>
-                <div class="view-body_folder_main_content">
-                    <i class="fa-solid fa-folder"></i>
-                    <p class="view-body_folder_main_content_name"> Thái Văn Thiện</p>
-                    <i class="fa-solid fa-ellipsis-vertical"></i>
-                </div>
-                <div class="view-body_folder_main_content">
-                    <i class="fa-solid fa-folder"></i>
-                    <p class="view-body_folder_main_content_name"> Thái Văn Thiện</p>
-                    <i class="fa-solid fa-ellipsis-vertical"></i>
-                </div>
-                <div class="view-body_folder_main_content">
-                    <i class="fa-solid fa-folder"></i>
-                    <p class="view-body_folder_main_content_name"> Thái Văn Thiện</p>
-                    <i class="fa-solid fa-ellipsis-vertical"></i>
-                </div>
-                <div class="view-body_folder_main_content">
-                    <i class="fa-solid fa-folder"></i>
-                    <p class="view-body_folder_main_content_name"> Thái Văn Thiện</p>
-                    <i class="fa-solid fa-ellipsis-vertical"></i>
-                </div>
-                <div class="view-body_folder_main_content">
-                    <i class="fa-solid fa-folder"></i>
-                    <p class="view-body_folder_main_content_name"> Thái Văn Thiện</p>
-                    <i class="fa-solid fa-ellipsis-vertical"></i>
-                </div>
-                <div class="view-body_folder_main_content">
-                    <i class="fa-solid fa-folder"></i>
-                    <p class="view-body_folder_main_content_name"> Thái Văn Thiện</p>
-                    <i class="fa-solid fa-ellipsis-vertical"></i>
-                </div>
-                <div class="view-body_folder_main_content">
-                    <i class="fa-solid fa-folder"></i>
-                    <p class="view-body_folder_main_content_name"> Thái Văn Thiện</p>
-                    <i class="fa-solid fa-ellipsis-vertical"></i>
-                </div>
+
+                <i class="fa-solid fa-plus" (click)="addfolder()"></i>
+            
             </div>
 
         </div>
         <div class="view-body_file">
             <p class="view-body_file_name"> File</p>
             <div class="view-body_file_main">
-                <div class="view-body_file_main_content">
-                    <p class="view-body_file_main_content_name"> Thái Văn Thiện</p>
-                    <img src="../../assets/img-excel.png" alt="" class="view-body_file_main_content_img">
-
+                <div class="view-body_file_main_content" *ngFor="let file of listFile, let i=index">
+                    <p class="view-body_file_main_content_name" [class.mangadd]="mangadd[i]"> {{file.filename}} <i class="fa-solid fa-pen" (click)="changename(file.id,i)"></i></p>
+                    <input [ngModel]=listFile[i].filename #changenam="ngModel" class="input" [class.change]="mangaddd[i]">
+                    <i class="fa-solid fa-check" [class.change]="mangaddd[i]" (click)="submitname(file.id,changenam.value)"></i>
+                    <img *ngIf="(file.filename).includes('.word')" src="../../assets/img-word.png" alt="" class="view-body_file_main_content_img" (click)="lastview(file.id)">
+                    <img *ngIf="(file.filename).includes('.excel')" src="../../assets/img-excel.png" alt="" class="view-body_file_main_content_img" (click)="lastview(file.id)">
+                    <img *ngIf="(file.filename).includes('.pdf')" src="../../assets/img-pdf.png" alt="" class="view-body_file_main_content_img" (click)="lastview(file.id)">
+                    <p class="view-body_file_main_content_username">By: {{file.username}}</p>
+                    <p class="view-body_file_main_content_size">  With: {{file.size}}</p>
+                    <p class="view-body_file_main_content_lastview">  Last view: {{file.timeat}}</p>
+                    <i class="fa-regular fa-eye"> : {{file.view}}</i>
+                    <i class="fa-solid fa-trash"></i>
                 </div>
-                <div class="view-body_file_main_content">
-                     <p class="view-body_file_main_content_name"> Thái Văn Thiện</p>
-                    <img src="../../assets/img-pdf.png" alt="" class="view-body_file_main_content_img">
-
-                </div>
-                <div class="view-body_file_main_content">
-                     <p class="view-body_file_main_content_name"> Thái Văn Thiện</p>
-                    <img src="../../assets/img-word.png" alt="" class="view-body_file_main_content_img">
-
-                </div>
-                <div class="view-body_file_main_content">
-                     <p class="view-body_file_main_content_name"> Thái Văn Thiện</p>
-                    <img src="../../assets/img-excel.png" alt="" class="view-body_file_main_content_img">
-
-                </div>
-                <div class="view-body_file_main_content">
-                     <p class="view-body_file_main_content_name"> Thái Văn Thiện</p>
-                     <img src="../../assets/img-word.png" alt="" class="view-body_file_main_content_img">
-
-                </div>
-                <div class="view-body_file_main_content">
-                     <p class="view-body_file_main_content_name"> Thái Văn Thiện</p>
-                     <img src="../../assets/img-pdf.png" alt="" class="view-body_file_main_content_img">
-
-                </div>
-                <div class="view-body_file_main_content">
-                     <p class="view-body_file_main_content_name"> Thái Văn Thiện</p>
-                     <img src="../../assets/img-word.png" alt="" class="view-body_file_main_content_img">
-
-                </div>
-                <div class="view-body_file_main_content">
-                     <p class="view-body_file_main_content_name"> Thái Văn Thiện</p>
-                    <img src="../../assets/img-excel.png" alt="" class="view-body_file_main_content_img">
-
-                </div>
-                <div class="view-body_file_main_content">
-                     <p class="view-body_file_main_content_name"> Thái Văn Thiện</p>
-                     <img src="../../assets/img-word.png" alt="" class="view-body_file_main_content_img">
-
-                </div>
-                <div class="view-body_file_main_content">
-                     <p class="view-body_file_main_content_name"> Thái Văn Thiện</p>
-                     <img src="../../assets/img-pdf.png" alt="" class="view-body_file_main_content_img">
-
+            </div>
+        </div>
+        <div class="view-body_file" [class.addd]="addd">
+            <p class="view-body_file_name"> File</p>
+            <div class="view-body_file_main">
+                <div class="view-body_file_main_content" *ngFor="let file of listFiles">
+                    <p class="view-body_file_main_content_name"> {{file.filename}}</p>
+                    <img *ngIf="(file.filename).includes('.word')" src="../../assets/img-word.png" alt="" class="view-body_file_main_content_img">
+                    <img *ngIf="(file.filename).includes('.excel')" src="../../assets/img-excel.png" alt="" class="view-body_file_main_content_img">
+                    <img *ngIf="(file.filename).includes('.pdf')" src="../../assets/img-pdf.png" alt="" class="view-body_file_main_content_img">
+                    <p class="view-body_file_main_content_username">By: {{file.username}}</p>
+                    <p class="view-body_file_main_content_size">  With: {{file.size}}</p>
                 </div>
             </div>
         </div>
         </div>
+
+        <div class="view-body_file them" [class.addd]="addd">
+            <p class="view-body_file_name"> File</p>
+            <div class="view-body_file_main">
+                <div class="view-body_file_main_content" *ngFor="let file of listFiles">
+                    <p class="view-body_file_main_content_name"> {{file.filename}}</p>
+                    <img *ngIf="(file.filename).includes('.word')" src="../../assets/img-word.png" alt="" class="view-body_file_main_content_img">
+                    <img *ngIf="(file.filename).includes('.excel')" src="../../assets/img-excel.png" alt="" class="view-body_file_main_content_img">
+                    <img *ngIf="(file.filename).includes('.pdf')" src="../../assets/img-pdf.png" alt="" class="view-body_file_main_content_img">
+                    <p class="view-body_file_main_content_username">By: {{file.username}}</p>
+                    <p class="view-body_file_main_content_size">  With: {{file.size}}</p>
+                </div>
+            </div>
+        </div>
+
+
+
     </div>
 </body>
 </html>

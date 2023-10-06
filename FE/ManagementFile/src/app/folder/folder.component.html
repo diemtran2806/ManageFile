@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="folder">
+    <p class="folder-name"></p>
+    <div class="folder-main">
+        <div class="folder-main_content" *ngFor="let file of listFolder">
+            <p class="folder-main_content_name">{{file.filename}}</p>
+            <img *ngIf="(file.filename).includes('.word')" src="../../assets/img-word.png" alt="" class="folder-main_content_img">
+            <img *ngIf="(file.filename).includes('.excel')" src="../../assets/img-excel.png" alt="" class="folder-main_content_img">
+            <img *ngIf="(file.filename).includes('.pdf')" src="../../assets/img-pdf.png" alt="" class="folder-main_content_img">
+            <p class="folder-main_content_date">Date: {{file.ngay}}</p>
+            <p class="folder-main_content_size">Size: {{file.size}}</p>
+            <p class="folder-main_content_user">By: {{file.username}}</p>
+        </div>
+    </div>
+    </div>
+</body>
+</html>
