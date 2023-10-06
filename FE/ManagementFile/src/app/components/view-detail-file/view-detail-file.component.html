@@ -1,1 +1,25 @@
-<p>view-detail-file works!</p>
+<div *ngIf="data.length > 0 && typeFile === 'xlsx'">
+  <table>
+    <!-- <thead>
+      <tr>
+        <th *ngFor="let column of data[0] | objectToArray">{{ column }}</th>
+      </tr>
+    </thead> -->
+    <tbody>
+      <tr *ngFor="let row of data">
+        <td
+          class="border border-black px-3 py-1"
+          *ngFor="let column of row | keyvalue"
+        >
+          {{ column.value }}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div
+  *ngIf="(data.length > 0 && typeFile === 'jpg') || typeFile === 'png'"
+></div>
+
+<img src="{{ fileView }}" alt="" />
