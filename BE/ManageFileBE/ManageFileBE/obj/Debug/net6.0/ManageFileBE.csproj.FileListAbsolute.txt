@@ -134,3 +134,4 @@ F:\Code\.NET\ManageFile\BE\ManageFileBE\ManageFileBE\obj\Debug\net6.0\refint\Man
 F:\Code\.NET\ManageFile\BE\ManageFileBE\ManageFileBE\obj\Debug\net6.0\ManageFileBE.pdb
 F:\Code\.NET\ManageFile\BE\ManageFileBE\ManageFileBE\obj\Debug\net6.0\ManageFileBE.genruntimeconfig.cache
 F:\Code\.NET\ManageFile\BE\ManageFileBE\ManageFileBE\obj\Debug\net6.0\ref\ManageFileBE.dll
+F:\Code\.NET\ManageFile\BE\ManageFileBE\ManageFileBE\bin\Debug\net6.0\uploads\appsettings.json
