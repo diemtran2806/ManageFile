@@ -25,6 +25,7 @@ export class View implements OnInit {
     this.api
       .getAllFile()
       .then((response) => {
+        console.log("res data",response.data);
         this.fileUpload = response.data;
       })
       .catch((error) => {

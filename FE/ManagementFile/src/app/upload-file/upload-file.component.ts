@@ -1,5 +1,10 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, ElementRef, ViewChild } from '@angular/core';
+import { ServerHttpService } from '../Services/server-http.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import {
+  faTrash
+} from '@fortawesome/free-solid-svg-icons';
+import { NgToastService } from 'ng-angular-popup';
 
 @Component({
   selector: 'app-upload-file',
@@ -12,8 +17,15 @@ export class UploadFileComponent {
   // selectedFiles: File[] = [];
 
   selectedFile: File | null = null;
+  faTrash = faTrash;
 
-  constructor(private http: HttpClient) { }
+
+  constructor(
+    private serverHttp: ServerHttpService,
+    private router: Router,
+    private route: ActivatedRoute,
+    private toastService: NgToastService
+  ) {}
 
   chooseFile() {
     this.fileInput.nativeElement.click();
@@ -23,14 +35,28 @@ export class UploadFileComponent {
     this.selectedFile = event.target.files[0];
   }
 
-  uploadFile(): void {
-    // if (this.selectedFile) {
-    //   const formData = new FormData();
-    //   formData.append('file', this.selectedFile);
+  removeFile(): void {
+    this.selectedFile = null;
+  }
 
-    //   this.http.post('your-api-endpoint/upload', formData).subscribe(response => {
-    //     // Handle the response from the server.
-    //   });
-    // }
+  uploadFile(): void {
+    if (this.selectedFile) {
+      const formData = new FormData();
+      formData.append('file', this.selectedFile);
+      formData.append('author', 'Diem');
+      // this.serverHttp.uploadFileToServer(formData)
+      //   .subscribe(response => {
+      //     // Xử lý phản hồi từ máy chủ (nếu cần)
+      //     console.log('Upload successfully!', response);
+      //   });
+      this.serverHttp.uploadFileToServer(formData).then(response => {
+          this.toastService.success({detail:"Upload successfully!", summary: "A file have already uploaded!", duration: 5000, position: 'topRight'})
+          this.router.navigate(['view']);
+        }).catch(error => {
+          this.toastService.error({detail:"Upload failed!", summary: "A file have already uploaded!", duration: 5000, position: 'topRight'})
+        })
+    } else {
+      this.toastService.warning({detail:"Please choose a file!", summary: "A file have already uploaded!", duration: 5000, position: 'topRight'})
+    }
   }
 }
