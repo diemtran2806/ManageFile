@@ -4,7 +4,6 @@ using ManageFileBE.Service.Interface;
 using ManageFileBE.Dto;
 using Microsoft.AspNetCore.Mvc;
 
-
 namespace ManageFileBE.Controllers
 {
     [Route("api/file")]
@@ -55,18 +54,18 @@ namespace ManageFileBE.Controllers
             }
             catch (Exception e)
             {
-                return NotFound("Hình ảnh không tồn tại.");
+                return NotFound("File không tồn tại.");
             }
         }
 
         [HttpPost]
-        public IActionResult Post([FromForm] IFormFile file, [FromForm] string author)
+        public async Task<IActionResult> PostAsync([FromForm] IFormFile file, [FromForm] string author)
         {
             try
             {
                 string param1 = author;
                 string param2 = file.FileName;
-                bool isSave = this._fileService.saveFile(author, file);
+                bool isSave = await this._fileService.saveFileAsync(author, file);
                 if (isSave == true)
                     return Ok("Upload Ok");
                 else

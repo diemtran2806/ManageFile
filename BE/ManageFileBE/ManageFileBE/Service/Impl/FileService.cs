@@ -19,7 +19,11 @@ namespace ManageFileBE.Service.Impl
 
         public ICollection<FileEntity> getAllFile()
         {
-            return this._fileRepository.getAllFile();
+            ICollection < FileEntity > fileEntities =  this._fileRepository.getAllFile();
+            if (fileEntities.Count > 0)
+                return fileEntities;
+            else
+                throw new NotFoundException("Danh sách rỗng");
         }
 
         public FileEntity getFileById(int id)
@@ -50,9 +54,9 @@ namespace ManageFileBE.Service.Impl
         }
        
 
-        public bool saveFile(string author, IFormFile file)
+        public async Task<Boolean> saveFileAsync(string author, IFormFile file)
         {
-            String fileName = _fileStore.storeFile(file);
+            String fileName = await _fileStore.storeFile(file);
             FileEntity fileEntity = new FileEntity();
             fileEntity.Author = author;
             fileEntity.FileName = fileName;

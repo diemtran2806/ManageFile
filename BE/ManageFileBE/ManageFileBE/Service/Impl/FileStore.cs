@@ -5,10 +5,9 @@ namespace ManageFileBE.Service.Impl
 {
     public class FileStore : IFileStore
     {
-
-        public String storeFile(IFormFile file)
+        public async Task<string> storeFile(IFormFile file)
         {
-            if (file == null || file.Length == 0)
+            /*if (file == null || file.Length == 0)
             {
                 throw new NotFoundException("Không tìm thấy file");
             }
@@ -16,15 +15,46 @@ namespace ManageFileBE.Service.Impl
             var fileExtension = Path.GetExtension(file.FileName);
 
             var existingFiles = Directory.GetFiles(IFileStore._uploadsPath, $"{fileNameWithoutExtension}*{fileExtension}");
-            int highestFileCount = existingFiles.Length;
 
-            String fileName = $"{fileNameWithoutExtension} ({highestFileCount}){fileExtension}";
+            String highestFileCount = "";
+            if(existingFiles.Length > 0)
+            {
+                highestFileCount = $"({existingFiles.Length})";
+            }
+
+            String fileName = $"{fileNameWithoutExtension}{highestFileCount}{fileExtension}";
             var filePath = Path.Combine(IFileStore._uploadsPath, fileName);
             using (var stream = new FileStream(filePath, FileMode.Create))
             {
                 file.CopyToAsync(stream);
             }
-            return fileName;
+            return fileName;*/
+
+           
+                if (file == null || file.Length == 0)
+                {
+                    throw new ArgumentException("Tệp trống hoặc không tồn tại.");
+                }
+
+                var fileNameWithoutExtension = Path.GetFileNameWithoutExtension(file.FileName);
+                var fileExtension = Path.GetExtension(file.FileName);
+
+                string highestFileCount = "";
+                var existingFiles = Directory.GetFiles(IFileStore._uploadsPath, $"{fileNameWithoutExtension}*{fileExtension}");
+                if (existingFiles.Length > 0)
+                {
+                    highestFileCount = $"({existingFiles.Length})";
+                }
+                string fileName = $"{fileNameWithoutExtension}{highestFileCount}{fileExtension}";
+                var filePath = Path.Combine(IFileStore._uploadsPath, fileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    await file.CopyToAsync(stream);
+                }
+
+                return fileName;
+
         }
 
         public byte[] viewFileByteCode(string fileName)
