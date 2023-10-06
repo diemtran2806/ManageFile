@@ -78,7 +78,23 @@ namespace ManageFileBE.Controllers
                 return StatusCode(500, "An internal server error occurred.");
             }
         }
-
+        [HttpPut("{id}")]
+        public IActionResult renameFile(int id, [FromBody] string newName)
+        {
+            try
+            {
+                bool isUpdate = this._fileService.renameFile(id, newName);
+                if (isUpdate == true)
+                    return Ok("Upload Ok");
+                else
+                    return StatusCode(500, "An internal server error occurred.");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return StatusCode(500, "An internal server error occurred.");
+            }
+        }
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {

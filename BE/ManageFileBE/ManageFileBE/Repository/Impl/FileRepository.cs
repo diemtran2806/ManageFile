@@ -33,5 +33,11 @@ namespace ManageFileBE.Repository.Impl
             this._dbContext.Add(fileEntity);
             return this._dbContext.SaveChanges() > 0;
         }
+
+        public bool updateFile(FileEntity fileEntity)
+        {
+            this._dbContext.Update(fileEntity);
+            return this._dbContext.SaveChanges() > 0;
+        }
     }
 }

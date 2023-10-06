@@ -52,15 +52,26 @@ namespace ManageFileBE.Service.Impl
 
         public bool saveFile(string author, IFormFile file)
         {
-            if (_fileStore.storeFile(file) == true)
+            String fileName = _fileStore.storeFile(file);
+            FileEntity fileEntity = new FileEntity();
+            fileEntity.Author = author;
+            fileEntity.FileName = fileName;
+            fileEntity.UploadDate = DateTime.Now;
+            return this._fileRepository.saveFile(fileEntity);
+        }
+
+        public bool renameFile(int id, String newName)
+        {
+            FileEntity fileEntity = this._fileRepository.getFileById(id);
+            if (fileEntity != null)
             {
-                FileEntity fileEntity = new FileEntity();
-                fileEntity.Author = author;
-                fileEntity.FileName = file.FileName;
-                fileEntity.UploadDate = DateTime.Now;
-                return this._fileRepository.saveFile(fileEntity);
+                if(_fileStore.renameFile(fileEntity.FileName, newName) == true)
+                {
+                    fileEntity.FileName = newName;
+                    return this._fileRepository.updateFile(fileEntity);
+                }
             }
-            return false; 
+            throw new NotFoundException("Không tìm thấy file chỉ định");
         }
         public bool deleteFile(int id)
         {
