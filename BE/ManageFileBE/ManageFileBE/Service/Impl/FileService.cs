@@ -16,25 +16,7 @@ namespace ManageFileBE.Service.Impl
             this._fileRepository = fileRepository;
             this._fileStore = fileStore;
         }
-<<<<<<< HEAD
-        public bool deleteFile(int id)
-        {
-            FileEntity fileEntity = this._fileRepository.getFileById(id);
-            
-            if (fileEntity != null)
-            {
-                bool check =  this._fileRepository.deleteFile(fileEntity);
-                if (check)
-                {
-                    this._fileStore.deleteFile(fileEntity.FileName);
-                    return true;
-                }
-            }
-            throw new NotFoundException("Không tìm thấy file chỉ định");
-        }
-=======
->>>>>>> dfe0722ed57857e90703b368c4b58c50fd15a953
-
+      
         public ICollection<FileEntity> getAllFile()
         {
             ICollection < FileEntity > fileEntities =  this._fileRepository.getAllFile();

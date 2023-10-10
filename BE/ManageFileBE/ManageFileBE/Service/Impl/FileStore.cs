@@ -101,23 +101,5 @@ namespace ManageFileBE.Service.Impl
                 throw new NotFoundException("Không tìm thấy tệp tin.");
             }
         }
-
-
-<<<<<<< HEAD
-        public byte[] viewFileByteCode(string fileName)
-        {
-            string filePath = Path.Combine(IFileStore._uploadsPath, fileName);
-            if (File.Exists(filePath))
-            {
-                byte[] fileBytes = File.ReadAllBytes(filePath);
-                return fileBytes;
-            }
-            else
-            {
-                throw new NotFoundException("File không tồn tại.");
-            }
-        }
-=======
->>>>>>> dfe0722ed57857e90703b368c4b58c50fd15a953
     }
 }
