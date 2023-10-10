@@ -17,10 +17,16 @@ export class MainLayoutComponent {
   faSearch = faMagnifyingGlass;
   faPlus = faPlus;
   faFile = faFile;
-  
-  constructor(private router: Router) { }
+
+  constructor(private router: Router) {}
 
   public uploadFile() {
     this.router.navigate(['upload-file']);
+  }
+
+  reload() {
+    setTimeout(() => {
+      window.location.reload();
+    }, 400);
   }
 }
