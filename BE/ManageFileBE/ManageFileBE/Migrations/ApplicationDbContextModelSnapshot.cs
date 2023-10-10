@@ -24,17 +24,23 @@ namespace ManageFileBE.Migrations
 
             modelBuilder.Entity("ManageFileBE.Models.FileEntity", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("bigint");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"), 1L, 1);
 
                     b.Property<string>("Author")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("FileName")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("Length")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -43,7 +49,7 @@ namespace ManageFileBE.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("FileEntity");
+                    b.ToTable("Files");
                 });
 #pragma warning restore 612, 618
         }

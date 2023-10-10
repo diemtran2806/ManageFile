@@ -61,6 +61,7 @@ namespace ManageFileBE.Service.Impl
             fileEntity.Author = author;
             fileEntity.FileName = fileName;
             fileEntity.UploadDate = DateTime.Now;
+            fileEntity.Length = ConvertBytes(file.Length);
             return this._fileRepository.saveFile(fileEntity);
         }
 
@@ -92,7 +93,7 @@ namespace ManageFileBE.Service.Impl
             throw new NotFoundException("Không tìm thấy file chỉ định");
         }
 
-        public String getContentType(String fileName)
+        private String getContentType(String fileName)
         {
             fileName = fileName.Trim().ToLower();
 
@@ -124,6 +125,27 @@ namespace ManageFileBE.Service.Impl
                 return "application/octet-stream";
         }
 
-        
+        private string ConvertBytes(long byteValue)
+        {
+            if (byteValue >= Math.Pow(1024, 3))
+            {
+                int gb = (int)(byteValue / Math.Pow(1024, 3));
+                return $"{gb:F2}GB";
+            }
+            else if (byteValue >= Math.Pow(1024, 2))
+            {
+                int mb = (int)(byteValue / Math.Pow(1024, 2));
+                return $"{mb:F2}MB";
+            }
+            else if (byteValue >= 1024)
+            {
+                int kb = (int)(byteValue / 1024);
+                return $"{kb:F2}kB";
+            }
+            else
+            {
+                return $"{byteValue}b";
+            }
+        }
     }
 }
