@@ -1,4 +1,4 @@
-﻿
+
 using ManageFileBE.Config;
 using ManageFileBE.Models;
 using ManageFileBE.Repository.Interface;
@@ -20,7 +20,7 @@ namespace ManageFileBE.Repository.Impl
 
         public ICollection<FileEntity> getAllFile()
         {
-            return this._dbContext.FileEntity.ToList();
+            return _dbContext.FileEntity.OrderBy(f => f.UploadDate).ToList();
         }
 
         public FileEntity getFileById(int id)
@@ -31,6 +31,12 @@ namespace ManageFileBE.Repository.Impl
         public bool saveFile(FileEntity fileEntity)
         {
             this._dbContext.Add(fileEntity);
+            return this._dbContext.SaveChanges() > 0;
+        }
+
+        public bool updateFile(FileEntity fileEntity)
+        {
+            this._dbContext.Update(fileEntity);
             return this._dbContext.SaveChanges() > 0;
         }
     }

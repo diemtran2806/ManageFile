@@ -1,9 +1,8 @@
 
 ﻿using ManageFileBE.Models;
 using ManageFileBE.Service.Interface;
-using ManagerFileBE.Dto;
+using ManageFileBE.Dto;
 using Microsoft.AspNetCore.Mvc;
-
 
 namespace ManageFileBE.Controllers
 {
@@ -12,8 +11,6 @@ namespace ManageFileBE.Controllers
     public class FileController : ControllerBase
     {
         private IFileService _fileService;
-
-
         public FileController(IFileService fileService)
         {
             _fileService = fileService;
@@ -57,19 +54,18 @@ namespace ManageFileBE.Controllers
             }
             catch (Exception e)
             {
-                return NotFound("Hình ảnh không tồn tại.");
+                return NotFound("File không tồn tại.");
             }
         }
 
         [HttpPost]
-        public IActionResult Post([FromForm] IFormFile file, [FromForm] string author)
+        public async Task<IActionResult> PostAsync([FromForm] IFormFile file, [FromForm] string author)
         {
-
             try
             {
                 string param1 = author;
                 string param2 = file.FileName;
-                bool isSave = this._fileService.saveFile(author, file);
+                bool isSave = await this._fileService.saveFileAsync(author, file);
                 if (isSave == true)
                     return Ok("Upload Ok");
                 else
@@ -77,10 +73,27 @@ namespace ManageFileBE.Controllers
             }
             catch (Exception e)
             {
+                Console.WriteLine(e.Message);
                 return StatusCode(500, "An internal server error occurred.");
             }
         }
-
+        [HttpPut("{id}")]
+        public IActionResult renameFile(int id, [FromBody] string newName)
+        {
+            try
+            {
+                bool isUpdate = this._fileService.renameFile(id, newName);
+                if (isUpdate == true)
+                    return Ok("Upload Ok");
+                else
+                    return StatusCode(500, "An internal server error occurred.");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return StatusCode(500, "An internal server error occurred.");
+            }
+        }
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {

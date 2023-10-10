@@ -5,6 +5,63 @@ namespace ManageFileBE.Service.Impl
 {
     public class FileStore : IFileStore
     {
+        public async Task<string> storeFile(IFormFile file)
+        {
+            if (file == null || file.Length == 0)
+            {
+                throw new ArgumentException("Tệp trống hoặc không tồn tại.");
+            }
+
+            var fileNameWithoutExtension = Path.GetFileNameWithoutExtension(file.FileName);
+            var fileExtension = Path.GetExtension(file.FileName);
+
+            string highestFileCount = "";
+            var existingFiles = Directory.GetFiles(IFileStore._uploadsPath, $"{fileNameWithoutExtension}*{fileExtension}");
+            if (existingFiles.Length > 0)
+            {
+                highestFileCount = $"({existingFiles.Length})";
+            }
+            string fileName = $"{fileNameWithoutExtension}{highestFileCount}{fileExtension}";
+            var filePath = Path.Combine(IFileStore._uploadsPath, fileName);
+
+            using (var stream = new FileStream(filePath, FileMode.Create))
+            {
+                await file.CopyToAsync(stream);
+            }
+            return fileName;
+        }
+
+        public byte[] viewFileByteCode(string fileName)
+        {
+
+            string filePath = Path.Combine(IFileStore._uploadsPath, fileName);
+            if (File.Exists(filePath))
+            {
+                byte[] fileBytes = File.ReadAllBytes(filePath);
+                return fileBytes;
+            }
+            else
+            {
+                throw new NotFoundException("Hình ảnh không tồn tại.");
+            }
+        }
+        public bool renameFile(String oldName, String newName)
+        {
+            String oldPath = Path.Combine(IFileStore._uploadsPath, oldName);
+            String newPath = Path.Combine(IFileStore._uploadsPath, newName);
+            if (File.Exists(oldPath))
+            {
+                if (!File.Exists(newPath))
+                {
+                    File.Move(oldPath, newPath);
+                    return true;
+                }
+                else throw new IOException("File đã tồn tại. Không thể đổi tên!");
+                
+            }
+            else
+                throw new NotFoundException("File không tồn tại");
+        }
         public bool deleteFile(string fileName)
         {
             string filePath = Path.Combine(IFileStore._uploadsPath, fileName);
@@ -19,34 +76,6 @@ namespace ManageFileBE.Service.Impl
             }
         }
 
-        public bool storeFile(IFormFile file)
-        {
-            if (file == null || file.Length == 0)
-            {
-                return false;
-            }
-            var path = IFileStore._uploadsPath;
-            var filePath = Path.Combine(path, file.FileName);
 
-            using (var stream = new FileStream(filePath, FileMode.Create))
-            {
-                file.CopyToAsync(stream);
-            }
-            return true;
-        }
-
-        public byte[] viewFileByteCode(string fileName)
-        {
-            string filePath = Path.Combine(IFileStore._uploadsPath, fileName);
-            if (File.Exists(filePath))
-            {
-                byte[] fileBytes = File.ReadAllBytes(filePath);
-                return fileBytes;
-            }
-            else
-            {
-                throw new NotFoundException("Hình ảnh không tồn tại.");
-            }
-        }
     }
 }

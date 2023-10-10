@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\smartdev\\ManageFile\\BE\\ManageFileBE\\ManageFileBE\\ManageFileBE.csproj": {}
+    "E:\\SmartDev\\ManageFile\\BE\\ManageFileBE\\ManageFileBE\\ManageFileBE.csproj": {}
   },
   "projects": {
-    "D:\\smartdev\\ManageFile\\BE\\ManageFileBE\\ManageFileBE\\ManageFileBE.csproj": {
+    "E:\\SmartDev\\ManageFile\\BE\\ManageFileBE\\ManageFileBE\\ManageFileBE.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\smartdev\\ManageFile\\BE\\ManageFileBE\\ManageFileBE\\ManageFileBE.csproj",
+        "projectUniqueName": "E:\\SmartDev\\ManageFile\\BE\\ManageFileBE\\ManageFileBE\\ManageFileBE.csproj",
         "projectName": "ManageFileBE",
-        "projectPath": "D:\\smartdev\\ManageFile\\BE\\ManageFileBE\\ManageFileBE\\ManageFileBE.csproj",
-        "packagesPath": "C:\\Users\\OS\\.nuget\\packages\\",
-        "outputPath": "D:\\smartdev\\ManageFile\\BE\\ManageFileBE\\ManageFileBE\\obj\\",
+        "projectPath": "E:\\SmartDev\\ManageFile\\BE\\ManageFileBE\\ManageFileBE\\ManageFileBE.csproj",
+        "packagesPath": "C:\\Users\\Acer\\.nuget\\packages\\",
+        "outputPath": "E:\\SmartDev\\ManageFile\\BE\\ManageFileBE\\ManageFileBE\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\OS\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Acer\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
