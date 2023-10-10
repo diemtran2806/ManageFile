@@ -2439,19 +2439,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Acer\\.nuget\\packages\\": {}
+    "C:\\Users\\OS\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\SmartDev\\ManageFile\\BE\\ManageFileBE\\ManageFileBE\\ManageFileBE.csproj",
+      "projectUniqueName": "D:\\smartdev\\ManageFile\\BE\\ManageFileBE\\ManageFileBE\\ManageFileBE.csproj",
       "projectName": "ManageFileBE",
-      "projectPath": "E:\\SmartDev\\ManageFile\\BE\\ManageFileBE\\ManageFileBE\\ManageFileBE.csproj",
-      "packagesPath": "C:\\Users\\Acer\\.nuget\\packages\\",
-      "outputPath": "E:\\SmartDev\\ManageFile\\BE\\ManageFileBE\\ManageFileBE\\obj\\",
+      "projectPath": "D:\\smartdev\\ManageFile\\BE\\ManageFileBE\\ManageFileBE\\ManageFileBE.csproj",
+      "packagesPath": "C:\\Users\\OS\\.nuget\\packages\\",
+      "outputPath": "D:\\smartdev\\ManageFile\\BE\\ManageFileBE\\ManageFileBE\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Acer\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\OS\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -2518,13 +2518,5 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "Undefined",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Problem reading the cache file E:\\SmartDev\\ManageFile\\BE\\ManageFileBE\\ManageFileBE\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
-    }
-  ]
+  }
 }
