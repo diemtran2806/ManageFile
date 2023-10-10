@@ -1,4 +1,5 @@
 ﻿using ManageFileBE.Models;
+using ManageFileBE.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace ManageFileBE.Config
@@ -11,5 +12,7 @@ namespace ManageFileBE.Config
         }
 
         public DbSet<FileEntity> FileEntity { get; set; }
+
+        public DbSet<Users>? Users { get; set; }
     }
 }

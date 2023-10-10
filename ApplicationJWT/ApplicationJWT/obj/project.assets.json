@@ -2730,19 +2730,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Acer\\.nuget\\packages\\": {}
+    "C:\\Users\\OS\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\SmartDev\\ManageFile\\ApplicationJWT\\ApplicationJWT\\ApplicationJWT.csproj",
+      "projectUniqueName": "D:\\smartdev\\ManageFile\\ApplicationJWT\\ApplicationJWT\\ApplicationJWT.csproj",
       "projectName": "ApplicationJWT",
-      "projectPath": "E:\\SmartDev\\ManageFile\\ApplicationJWT\\ApplicationJWT\\ApplicationJWT.csproj",
-      "packagesPath": "C:\\Users\\Acer\\.nuget\\packages\\",
-      "outputPath": "E:\\SmartDev\\ManageFile\\ApplicationJWT\\ApplicationJWT\\obj\\",
+      "projectPath": "D:\\smartdev\\ManageFile\\ApplicationJWT\\ApplicationJWT\\ApplicationJWT.csproj",
+      "packagesPath": "C:\\Users\\OS\\.nuget\\packages\\",
+      "outputPath": "D:\\smartdev\\ManageFile\\ApplicationJWT\\ApplicationJWT\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Acer\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\OS\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
