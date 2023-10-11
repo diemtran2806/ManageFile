@@ -10,7 +10,11 @@
           Create an account
         </h1>
 
-        <form class="space-y-3 md:space-y-4">
+        <form
+          [formGroup]="registerForm"
+          (ngSubmit)="registerAccount()"
+          class="space-y-3 md:space-y-4"
+        >
           <div>
             <label
               htmlFor="email"
@@ -24,7 +28,32 @@
               id="email"
               class="bg-gray-50 border text-gray-900 sm:text-sm rounded-lg block w-full p-2."
               placeholder="name@company.com"
+              formControlName="email"
+              email="true"
             />
+
+            <div
+              *ngIf="
+                registerForm.controls['email'].invalid &&
+                (registerForm.controls['email'].dirty ||
+                  registerForm.controls['email'].touched)
+              "
+              class="alert"
+            >
+              <div
+                class="text-red-600"
+                *ngIf="registerForm.controls['email'].errors?.['required']"
+              >
+                FullName is required.
+              </div>
+
+              <div
+                class="text-red-600"
+                *ngIf="registerForm.controls['email'].invalid && !registerForm.controls['email'].errors?.['required']"
+              >
+                Please enter a valid email address.
+              </div>
+            </div>
           </div>
 
           <div>
@@ -41,7 +70,24 @@
               class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg block w-full p-2.5"
               placeholder="Full Name"
               required=""
+              formControlName="fullName"
             />
+
+            <div
+              *ngIf="
+                registerForm.controls['fullName'].invalid &&
+                (registerForm.controls['fullName'].dirty ||
+                  registerForm.controls['fullName'].touched)
+              "
+              class="alert"
+            >
+              <div
+                class="text-red-600"
+                *ngIf="registerForm.controls['fullName'].errors?.['required']"
+              >
+                FullName is required.
+              </div>
+            </div>
           </div>
 
           <div>
@@ -51,14 +97,37 @@
             >
               Username
             </label>
+
             <input
               type="text"
               name="username"
               id="username"
               class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg block w-full p-2.5"
               placeholder="Username"
-              required=""
+              formControlName="username"
             />
+
+            <div
+              *ngIf="
+                registerForm.controls['username'].invalid &&
+                (registerForm.controls['username'].dirty ||
+                  registerForm.controls['username'].touched)
+              "
+              class="alert"
+            >
+              <div
+                class="text-red-600"
+                *ngIf="registerForm.controls['username'].errors?.['required']"
+              >
+                Name is required.
+              </div>
+              <div
+                class="text-red-600"
+                *ngIf="registerForm.controls['username'].errors?.['minlength']"
+              >
+                Name must be at least 8 characters long.
+              </div>
+            </div>
           </div>
 
           <div>
@@ -75,7 +144,30 @@
               placeholder="••••••••"
               class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg block w-full p-2.5"
               required=""
+              formControlName="password"
             />
+
+            <div
+              *ngIf="
+                registerForm.controls['password'].invalid &&
+                (registerForm.controls['password'].dirty ||
+                  registerForm.controls['password'].touched)
+              "
+              class="alert"
+            >
+              <div
+                class="text-red-600"
+                *ngIf="registerForm.controls['password'].errors?.['required']"
+              >
+                Password is required.
+              </div>
+              <div
+                class="text-red-600"
+                *ngIf="registerForm.controls['password'].errors?.['minlength']"
+              >
+                Password must be at least 8 characters long.
+              </div>
+            </div>
           </div>
 
           <div>
@@ -92,11 +184,35 @@
               placeholder="••••••••"
               class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg block w-full p-2.5"
               required=""
+              formControlName="confirmPassword"
+              minlength="8"
             />
+
+            <div
+              *ngIf="
+                registerForm.controls['confirmPassword'].invalid &&
+                (registerForm.controls['confirmPassword'].dirty ||
+                  registerForm.controls['confirmPassword'].touched)
+              "
+              class="text-red-600"
+            >
+              <div
+                *ngIf="registerForm.controls['confirmPassword'].errors?.['required']"
+              >
+                ConfirmPassword is required
+              </div>
+
+              <div
+                *ngIf="registerForm.controls['confirmPassword'].errors?.['confirmedValidator']"
+              >
+                Passwords did not match
+              </div>
+            </div>
           </div>
 
           <button
             type="submit"
+            [disabled]="!registerForm.valid"
             class="w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center"
           >
             Create an account

@@ -10,7 +10,11 @@
           Login an account
         </h1>
 
-        <form class="space-y-3 md:space-y-4">
+        <form
+          [formGroup]="registerForm"
+          (ngSubmit)="loginAccount()"
+          class="space-y-3 md:space-y-4"
+        >
           <div>
             <label
               htmlFor="username"
@@ -25,8 +29,30 @@
               class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg block w-full p-2.5"
               placeholder="Username"
               required=""
-              [(ngModel)]="username"
+              formControlName="username"
             />
+
+            <div
+              *ngIf="
+                registerForm.controls['username'].invalid &&
+                (registerForm.controls['username'].dirty ||
+                  registerForm.controls['username'].touched)
+              "
+              class="alert"
+            >
+              <div
+                class="text-red-600"
+                *ngIf="registerForm.controls['username'].errors?.['required']"
+              >
+                Name is required.
+              </div>
+              <div
+                class="text-red-600"
+                *ngIf="registerForm.controls['username'].errors?.['minlength']"
+              >
+                Name must be at least 8 characters long.
+              </div>
+            </div>
           </div>
 
           <div>
@@ -43,14 +69,35 @@
               placeholder="••••••••"
               class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg block w-full p-2.5"
               required=""
+              formControlName="password"
             />
-          </div>
 
+            <div
+              *ngIf="
+                registerForm.controls['password'].invalid &&
+                (registerForm.controls['password'].dirty ||
+                  registerForm.controls['password'].touched)
+              "
+              class="alert"
+            >
+              <div
+                class="text-red-600"
+                *ngIf="registerForm.controls['password'].errors?.['required']"
+              >
+                Password is required.
+              </div>
+              <div
+                class="text-red-600"
+                *ngIf="registerForm.controls['password'].errors?.['minlength']"
+              >
+                Password must be at least 8 characters long.
+              </div>
+            </div>
+          </div>
+          <!-- routerLink="/"
+          routerLinkActive="active" -->
           <button
             type="submit"
-            routerLink="/"
-            routerLinkActive="active"
-            (click)="saveUsername()"
             class="w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center"
           >
             Login

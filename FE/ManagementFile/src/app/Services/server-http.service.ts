@@ -5,20 +5,20 @@ import {
   HttpClient,
   HttpErrorResponse,
 } from '@angular/common/http';
+import { UserLogin, UserRegister } from '../interfaces/user';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ServerHttpService {
-  
-  private REST_API_SERVER = 'https://localhost:5050/api';
+  private REST_API_SERVER = 'https://localhost:5050/api/';
   getAllFile() {
-    return axios.get(`${this.REST_API_SERVER}/file`);
+    return axios.get(`${this.REST_API_SERVER}file`);
   }
 
   deleteFile(id: number) {
     console.log(id);
-    return axios.delete(`${this.REST_API_SERVER}/file/${id}`);
+    return axios.delete(`${this.REST_API_SERVER}file/${id}`);
   }
   private httpOptions = {
     headers: new HttpHeaders({
@@ -29,7 +29,7 @@ export class ServerHttpService {
   constructor(private httpClient: HttpClient) {}
 
   public uploadFileToServer(data: FormData) {
-    const url = `${this.REST_API_SERVER}/file`;
+    const url = `${this.REST_API_SERVER}file`;
     // return this.httpClient
     //   .post<any>(url, data, this.httpOptions)
     //   .pipe(
@@ -42,14 +42,23 @@ export class ServerHttpService {
       headers: {
         'Content-Type': 'multipart/form-data',
       },
-    })
+    });
   }
 
   getFileById(id: string) {
-    return axios.get(`https://localhost:5050/api/file/${id}`);
+    return axios.get(`${this.REST_API_SERVER}file/${id}`);
   }
 
   getFileViewById(id: string) {
-    return axios.get(`https://localhost:5050/api/file/view/${id}`);
+    return axios.get(`${this.REST_API_SERVER}file/view/${id}`);
+  }
+
+  createNewAccount(userRegister: UserRegister) {
+    return axios.post(`${this.REST_API_SERVER}register`, userRegister);
+  }
+
+  loginAccount(userLogin: UserLogin) {
+    console.log(userLogin);
+    return axios.post(`${this.REST_API_SERVER}login`, userLogin);
   }
 }

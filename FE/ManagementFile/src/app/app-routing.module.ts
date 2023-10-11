@@ -23,6 +23,8 @@ const routes: Routes = [
       { path: 'upload-file', component: UploadFileComponent },
       { path: 'view/:id', component: ViewDetailFileComponent },
       { path: 'view', component: View },
+
+      { path: '', redirectTo: '/view', pathMatch: 'full' },
     ],
   },
 ];

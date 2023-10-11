@@ -1,0 +1,28 @@
+<div class="card">
+  <p-table
+    [value]="files"
+    styleClass="p-datatable-striped"
+    [tableStyle]="{ 'min-width': '900px' }"
+  >
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Name</th>
+        <th>Category</th>
+        <th>Quantity</th>
+        <th>Action</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-file>
+      <tr>
+        <td>{{ file.fileName }}</td>
+        <td>{{ file.uploadDate }}</td>
+        <td>{{ file.author }}</td>
+        <td (click)="getId(file.id)">
+          <div class="card">
+            <p-menubar [model]="items"></p-menubar>
+          </div>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>

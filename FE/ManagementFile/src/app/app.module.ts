@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FormsModule } from '@angular/forms';
 import { NgToastModule } from 'ng-angular-popup';
-import axios from 'axios';
+import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -17,6 +17,14 @@ import { UploadFileComponent } from './upload-file/upload-file.component';
 import { View } from './View/view.component';
 import { ViewDetailFileComponent } from './components/view-detail-file/view-detail-file.component';
 import { ObjectToArrayPipe } from './components/object-to-array.pipe';
+import '../assets/docx-preview.js';
+import { NgxDocViewerModule } from 'ngx-doc-viewer';
+import { TableModule } from 'primeng/table';
+import { MenubarModule } from 'primeng/menubar';
+import { ListFileComponent } from './components/list-file/list-file.component';
+import { PdfViewerModule } from 'ng2-pdf-viewer';
+import { ShareFileComponent } from './components/share-file/share-file.component';
+import { DynamicDialogModule } from 'primeng/dynamicdialog';
 
 @NgModule({
   declarations: [
@@ -28,6 +36,8 @@ import { ObjectToArrayPipe } from './components/object-to-array.pipe';
     View,
     ViewDetailFileComponent,
     ObjectToArrayPipe,
+    ListFileComponent,
+    ShareFileComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,6 +47,12 @@ import { ObjectToArrayPipe } from './components/object-to-array.pipe';
     FormsModule,
     NgToastModule,
     BrowserAnimationsModule,
+    ReactiveFormsModule,
+    NgxDocViewerModule,
+    TableModule,
+    MenubarModule,
+    PdfViewerModule,
+    DynamicDialogModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

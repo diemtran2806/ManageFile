@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import * as XLSX from 'xlsx';
-import { HttpClient } from '@angular/common/http';
+
 import { ServerHttpService } from 'src/app/Services/server-http.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { File } from 'src/app/interfaces/file';
 
 interface FileObject {
   id: number;
@@ -16,23 +16,20 @@ interface FileObject {
   styleUrls: ['./view-detail-file.component.scss'],
 })
 export class ViewDetailFileComponent implements OnInit {
-  data: any[] = [];
   docContent!: string;
   typeFile!: string;
   fileId!: string;
-  fileUpload!: FileObject;
+  fileUpload!: File;
   fileName!: string;
   fileView!: string;
 
   constructor(
-    private http: HttpClient,
     private api: ServerHttpService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
-    const excelFilePath = '../../../assets/text.docx';
-
     this.route.params.subscribe((params) => {
       this.fileId = params['id'];
     });
@@ -42,7 +39,6 @@ export class ViewDetailFileComponent implements OnInit {
       .then((res) => {
         this.fileUpload = res.data;
         this.fileName = this.fileUpload.fileName;
-        // console.log(this.fileName);
       })
       .catch((error) => {
         console.log(error);
@@ -50,29 +46,14 @@ export class ViewDetailFileComponent implements OnInit {
 
     setTimeout(() => {
       if (
-        this.getFileExtension(this.fileName) === 'png' ||
-        this.getFileExtension(this.fileName) === 'jpg'
+        this.getFileExtension(this.fileName) === 'doc' ||
+        this.getFileExtension(this.fileName) === 'docx'
       ) {
-        this.typeFile = this.getFileExtension(this.fileName);
-        this.fileView = `https://localhost:5050/api/file/view/${this.fileId}`;
-        console.log(this.fileView);
-        console.log(this.typeFile);
+        window.location.href = `https://localhost:5050/api/file/view/${this.fileId}`;
       }
+      this.typeFile = this.getFileExtension(this.fileName);
+      this.fileView = `https://localhost:5050/api/file/view/${this.fileId}`;
     }, 500);
-
-    if (this.typeFile === 'xlsx') {
-      this.http
-        .get(excelFilePath, { responseType: 'arraybuffer' })
-        .subscribe((response: ArrayBuffer) => {
-          const binarystr = new Uint8Array(response);
-          const workbook = XLSX.read(binarystr, { type: 'array' });
-          const first_sheet_name = workbook.SheetNames[0];
-          const worksheet = workbook.Sheets[first_sheet_name];
-
-          this.data = XLSX.utils.sheet_to_json(worksheet, { raw: true });
-        });
-    } else if (this.typeFile === 'docx' || this.typeFile === 'doc') {
-    }
   }
 
   getFileExtension(fileName: string): string {
