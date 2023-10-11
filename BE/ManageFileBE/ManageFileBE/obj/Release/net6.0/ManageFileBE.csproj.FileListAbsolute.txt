@@ -4,7 +4,6 @@ E:\SmartDev\ManageFile\BE\ManageFileBE\ManageFileBE\bin\Release\net6.0\ManageFil
 E:\SmartDev\ManageFile\BE\ManageFileBE\ManageFileBE\bin\Release\net6.0\ManageFileBE.deps.json
 E:\SmartDev\ManageFile\BE\ManageFileBE\ManageFileBE\bin\Release\net6.0\ManageFileBE.runtimeconfig.json
 E:\SmartDev\ManageFile\BE\ManageFileBE\ManageFileBE\bin\Release\net6.0\ManageFileBE.dll
-E:\SmartDev\ManageFile\BE\ManageFileBE\ManageFileBE\bin\Release\net6.0\ref\ManageFileBE.dll
 E:\SmartDev\ManageFile\BE\ManageFileBE\ManageFileBE\bin\Release\net6.0\ManageFileBE.pdb
 E:\SmartDev\ManageFile\BE\ManageFileBE\ManageFileBE\bin\Release\net6.0\Humanizer.dll
 E:\SmartDev\ManageFile\BE\ManageFileBE\ManageFileBE\bin\Release\net6.0\Microsoft.Data.SqlClient.dll
@@ -61,3 +60,17 @@ E:\SmartDev\ManageFile\BE\ManageFileBE\ManageFileBE\obj\Release\net6.0\ManageFil
 E:\SmartDev\ManageFile\BE\ManageFileBE\ManageFileBE\obj\Release\net6.0\ref\ManageFileBE.dll
 E:\SmartDev\ManageFile\BE\ManageFileBE\ManageFileBE\obj\Release\net6.0\ManageFileBE.pdb
 E:\SmartDev\ManageFile\BE\ManageFileBE\ManageFileBE\obj\Release\net6.0\ManageFileBE.genruntimeconfig.cache
+E:\SmartDev\ManageFile\BE\ManageFileBE\ManageFileBE\bin\Release\net6.0\BouncyCastle.Cryptography.dll
+E:\SmartDev\ManageFile\BE\ManageFileBE\ManageFileBE\bin\Release\net6.0\MailKit.dll
+E:\SmartDev\ManageFile\BE\ManageFileBE\ManageFileBE\bin\Release\net6.0\MimeKit.dll
+E:\SmartDev\ManageFile\BE\ManageFileBE\ManageFileBE\bin\Release\net6.0\System.Formats.Asn1.dll
+E:\SmartDev\ManageFile\BE\ManageFileBE\ManageFileBE\bin\Release\net6.0\System.Security.Cryptography.Pkcs.dll
+E:\SmartDev\ManageFile\BE\ManageFileBE\ManageFileBE\bin\Release\net6.0\System.Text.Encoding.CodePages.dll
+E:\SmartDev\ManageFile\BE\ManageFileBE\ManageFileBE\bin\Release\net6.0\runtimes\win\lib\net6.0\System.Security.Cryptography.Pkcs.dll
+E:\SmartDev\ManageFile\BE\ManageFileBE\ManageFileBE\bin\Release\net6.0\runtimes\win\lib\net6.0\System.Text.Encoding.CodePages.dll
+E:\SmartDev\ManageFile\BE\ManageFileBE\ManageFileBE\obj\Release\net6.0\staticwebassets\msbuild.ManageFileBE.Microsoft.AspNetCore.StaticWebAssets.props
+E:\SmartDev\ManageFile\BE\ManageFileBE\ManageFileBE\obj\Release\net6.0\staticwebassets\msbuild.build.ManageFileBE.props
+E:\SmartDev\ManageFile\BE\ManageFileBE\ManageFileBE\obj\Release\net6.0\staticwebassets\msbuild.buildMultiTargeting.ManageFileBE.props
+E:\SmartDev\ManageFile\BE\ManageFileBE\ManageFileBE\obj\Release\net6.0\staticwebassets\msbuild.buildTransitive.ManageFileBE.props
+E:\SmartDev\ManageFile\BE\ManageFileBE\ManageFileBE\obj\Release\net6.0\staticwebassets.pack.json
+E:\SmartDev\ManageFile\BE\ManageFileBE\ManageFileBE\obj\Release\net6.0\refint\ManageFileBE.dll

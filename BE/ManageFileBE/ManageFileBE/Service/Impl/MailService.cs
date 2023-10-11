@@ -1,7 +1,9 @@
-﻿using ManageFileBE.Dto;
+﻿using MailKit.Net.Smtp;
+using MailKit.Security;
+using ManageFileBE.Dto;
 using ManageFileBE.Service.Interface;
-using System.Net.Mail;
-using System.Net;
+using MimeKit;
+using MimeKit.Text;
 
 namespace ManageFileBE.Service.Impl
 {
@@ -13,23 +15,22 @@ namespace ManageFileBE.Service.Impl
         }    
         public void SendEmail(MailRequest mailRequest)
         {
+            String server = _configuration["MailSettings:Server"];
             String emailFrom = _configuration["MailSettings:SenderEmail"];
             String passwordEmail = _configuration["MailSettings:Password"];
             int port = Convert.ToInt32(_configuration["MailSettings:Port"]);
-            var smtpClient = new SmtpClient(_configuration["MailSettings:Server"])
-            {
-                Port = port,
-                Credentials = new NetworkCredential(emailFrom, passwordEmail),
-                EnableSsl = true,
-            };
-            var mailMessage = new MailMessage
-            {
-                From = new MailAddress(emailFrom),
-                Subject = mailRequest.Subject,
-                Body = mailRequest.Body,
-            };
-            mailMessage.To.Add(mailRequest.mailTo);
-            smtpClient.Send(mailMessage);
+            var email = new MimeMessage();
+
+            email.From.Add( MailboxAddress.Parse(emailFrom));
+            email.To.Add(MailboxAddress.Parse(mailRequest.mailTo));
+            email.Subject = mailRequest.Subject;
+            email.Body = new TextPart(TextFormat.Plain) { Text = mailRequest.Body };
+
+            using var smtp = new SmtpClient();
+            smtp.Connect(server, port, SecureSocketOptions.StartTls);
+            smtp.Authenticate(emailFrom, passwordEmail);
+            smtp.Send(email);
+            smtp.Disconnect(true);
         }
     }
 }
