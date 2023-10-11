@@ -1,10 +1,14 @@
 using ManageFileBE.Config;
+using ManageFileBE.MiddleWares;
 using ManageFileBE.Repository.Impl;
 using ManageFileBE.Repository.Interface;
 using ManageFileBE.Service.Impl;
 using ManageFileBE.Service.Interface;
+using ManageFileBE.Services.Impl;
+using ManageFileBE.Services.Interface;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
-
+using Microsoft.IdentityModel.Tokens;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -16,12 +20,30 @@ builder.Services.AddDbContext<ApplicationDbContext>(option =>
 {
     option.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IMailService, MailService>();
 builder.Services.AddScoped<IFileStore, FileStore>();
 builder.Services.AddScoped<IFileService, FileService>();
 builder.Services.AddScoped<IFileRepository, FileRepository>();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+//jwt
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
+{
+    options.RequireHttpsMetadata = false;
+    options.SaveToken = true;
+    options.TokenValidationParameters = new TokenValidationParameters()
+    {
+        ValidateIssuer = true,
+        ValidateAudience = true,
+        ValidAudience = builder.Configuration["Jwt:Audience"],
+        ValidIssuer = builder.Configuration["Jwt:Issuer"],
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
+    };
+});
+
 builder.Services.AddCors(o => o.AddPolicy("MyPolicy", builder =>
 {
     builder.AllowAnyOrigin()
@@ -37,10 +59,14 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseAuthentication();
+app.UseAuthorization();
+
 app.UseCors("MyPolicy");
 
 app.UseHttpsRedirection();
-
+app.UseMiddleware<TokenExpirationMiddleware>();
 app.MapControllers();
 
 app.Run();

@@ -3,9 +3,11 @@
 using ManageFileBE.Service.Interface;
 using ManageFileBE.Dto;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ManageFileBE.Controllers
 {
+
     [Route("api/file")]
     [ApiController]
     public class FileController : ControllerBase
@@ -15,7 +17,6 @@ namespace ManageFileBE.Controllers
         {
             _fileService = fileService;
         }
-
         [HttpGet]
         public ActionResult<ICollection<FileEntity>> GetAllFile()
         {
@@ -30,7 +31,6 @@ namespace ManageFileBE.Controllers
             }
 
         }
-
         [HttpGet("{id}")]
         public ActionResult<string> GetById(int id)
         {
@@ -57,7 +57,6 @@ namespace ManageFileBE.Controllers
                 return NotFound("File không tồn tại.");
             }
         }
-
         [HttpPost]
         public async Task<IActionResult> PostAsync([FromForm] IFormFile file, [FromForm] string author)
         {
@@ -77,6 +76,7 @@ namespace ManageFileBE.Controllers
                 return StatusCode(500, "An internal server error occurred.");
             }
         }
+
         [HttpPut("{id}")]
         public IActionResult renameFile(int id, [FromBody] string newName)
         {

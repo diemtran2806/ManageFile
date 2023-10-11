@@ -9,7 +9,7 @@ namespace ManageFileBE.Config
         {
 
         }
-
         public DbSet<FileEntity> FileEntity { get; set; }
+        public DbSet<Users>? Users { get; set; }
     }
 }
